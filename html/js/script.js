@@ -260,6 +260,35 @@ $(function () {
         $.post('https://phone/closeCamera', JSON.stringify({}));
     }
 
+    // Authentic Apple iPhone Boot Sequence Animation
+    var isPhoneBooted = false;
+
+    function triggerAppleBootSequence(callback) {
+        $('#boot-screen').addClass('active-boot').css('opacity', '1');
+        $('#boot-progress-bar').css('width', '0%');
+        
+        var progress = 0;
+        var bootInterval = setInterval(function () {
+            progress += Math.floor(Math.random() * 15) + 12;
+            if (progress >= 100) {
+                progress = 100;
+                $('#boot-progress-bar').css('width', '100%');
+                clearInterval(bootInterval);
+                
+                setTimeout(function () {
+                    $('#boot-screen').css('opacity', '0');
+                    setTimeout(function () {
+                        $('#boot-screen').removeClass('active-boot');
+                        isPhoneBooted = true;
+                        if (callback) callback();
+                    }, 400);
+                }, 250);
+            } else {
+                $('#boot-progress-bar').css('width', progress + '%');
+            }
+        }, 110);
+    }
+
     // Reset Phone UI to clean state
     function resetPhoneUI() {
         $('#control-center').removeClass('active-cc-screen');
@@ -326,7 +355,13 @@ $(function () {
         if (data.action === "openPhone") {
             phoneOpen = true;
             $('#iphone-wrapper').addClass('open');
-            resetPhoneUI();
+            if (!isPhoneBooted) {
+                triggerAppleBootSequence(function () {
+                    resetPhoneUI();
+                });
+            } else {
+                resetPhoneUI();
+            }
         } else if (data.action === "closePhone") {
             phoneOpen = false;
             stopRingtone();
@@ -337,7 +372,13 @@ $(function () {
             phoneOpen = !phoneOpen;
             if (phoneOpen) {
                 $('#iphone-wrapper').addClass('open');
-                resetPhoneUI();
+                if (!isPhoneBooted) {
+                    triggerAppleBootSequence(function () {
+                        resetPhoneUI();
+                    });
+                } else {
+                    resetPhoneUI();
+                }
             } else {
                 phoneOpen = false;
                 stopRingtone();
@@ -886,6 +927,13 @@ $(function () {
     $(document).on('click', '#btn-finish-setup', function () {
         localStorage.setItem("iphone_setup_done", "true");
         triggerFaceIDScan();
+    });
+
+    $(document).on('click', '#btn-trigger-reboot', function () {
+        $('.app-screen').removeClass('active-screen');
+        triggerAppleBootSequence(function () {
+            resetPhoneUI();
+        });
     });
 
     $(document).on('click', '#btn-re-setup', function () {

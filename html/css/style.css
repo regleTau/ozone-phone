@@ -30,6 +30,51 @@ html, body {
     pointer-events: none;
 }
 
+/* ============================================================
+   AUTHENTIC APPLE IPHONE BOOT ANIMATION OVERLAY STYLING
+   ============================================================ */
+.boot-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 5000;
+    background: #000000 !important;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    pointer-events: auto !important;
+}
+
+.boot-overlay.active-boot {
+    display: flex !important;
+}
+
+.boot-apple-logo {
+    font-size: 58px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.boot-progress-container {
+    width: 140px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.boot-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 4px;
+    transition: width 0.05s linear;
+}
+
 /* Brightness Filter Overlay Layer */
 .brightness-layer {
     position: absolute;
@@ -1978,6 +2023,7 @@ body.camera-mode-on,
     color: #ffffff;
 }
 
+.icon-reboot { background: #0a84ff; }
 .icon-danger { background: #ff453a; }
 .ios-danger-text { color: #ff453a; }
 
