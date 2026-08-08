@@ -998,13 +998,26 @@ $(function () {
         $('#home-screen').addClass('active-screen');
     });
 
-    // Dialer Buttons Handler
+    // Dialer Buttons Handler (authentic iOS style)
     $(document).on('click', '.dial-btn', function () {
         var key = $(this).attr('data-key');
-        var curr = $('#dial-number').text();
-        if (curr === "--- --- ---") curr = "";
-        if (curr.length < 12) {
-            $('#dial-number').text(curr + key);
+        var curr = $('#dial-number').text().trim();
+        if (curr.length < 15) {
+            curr = curr + key;
+            $('#dial-number').text(curr);
+        }
+        if (curr.length > 0) {
+            $('#btn-dial-backspace').show();
+        }
+    });
+
+    // Dialer Backspace Button
+    $(document).on('click', '#btn-dial-backspace', function () {
+        var curr = $('#dial-number').text().trim();
+        curr = curr.slice(0, -1);
+        $('#dial-number').text(curr);
+        if (curr.length === 0) {
+            $('#btn-dial-backspace').hide();
         }
     });
 

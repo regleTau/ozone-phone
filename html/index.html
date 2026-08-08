@@ -185,16 +185,26 @@
                     </div>
 
                     <!-- ============================================================
-                         CALL SCREEN OVERLAY (iOS 16)
+                         AUTHENTIC APPLE iOS 16 CALL IN-PROGRESS SCREEN
                          ============================================================ -->
                     <div id="call-screen" class="call-overlay">
                         <div class="caller-avatar">
                             <i class="bi bi-person-fill"></i>
                         </div>
                         <h2 id="caller-name">ID: 2</h2>
-                        <span id="caller-sim-sub" class="caller-sim">Cartelă: 0722-149-802</span>
+                        <span id="caller-sim-sub" class="caller-sim">Cartelă SIM: 0722-149-802</span>
                         <span id="call-status-label" class="call-status">Se apelează...</span>
                         <div id="call-timer-box" class="call-timer" style="display:none;">00:00</div>
+
+                        <!-- Authentic Apple 2x3 Call Actions Grid -->
+                        <div class="call-grid-actions">
+                            <div class="call-grid-btn"><i class="bi bi-mic-mute-fill"></i><span>mut</span></div>
+                            <div class="call-grid-btn"><i class="bi bi-grid-3x3-gap-fill"></i><span>tastatură</span></div>
+                            <div class="call-grid-btn"><i class="bi bi-volume-up-fill"></i><span>audio</span></div>
+                            <div class="call-grid-btn"><i class="bi bi-person-plus-fill"></i><span>adaugă</span></div>
+                            <div class="call-grid-btn"><i class="bi bi-camera-video-fill"></i><span>FaceTime</span></div>
+                            <div class="call-grid-btn"><i class="bi bi-person-lines-fill"></i><span>contacte</span></div>
+                        </div>
 
                         <div class="call-actions-row">
                             <button id="btn-reject-call" class="btn-call-ctrl btn-call-reject">
@@ -204,7 +214,7 @@
                                 <i class="bi bi-telephone-fill"></i>
                             </button>
                             <button id="btn-hangup-call" class="btn-call-ctrl btn-call-hangup" style="display:none;">
-                                <i class="bi bi-telephone-x-fill"></i>
+                                <i class="bi bi-telephone-fill" style="transform: rotate(135deg);"></i>
                             </button>
                         </div>
                     </div>
@@ -693,57 +703,81 @@
                     </div>
 
                     <!-- ============================================================
-                         8. TELEFON / CALLS APP SCREEN
+                         8. AUTHENTIC APPLE iOS 16 PHONE / CALLS APP
                          ============================================================ -->
                     <div id="app-phone" class="app-screen">
-                        <div class="app-header">
+                        <div class="ios-app-header-nav">
                             <button class="back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
-                            <h2>Apeluri (SIM / ID)</h2>
+                            <span class="ios-header-sim-tag" id="my-phone-sim-num">Orange 5G • 0722-701-492</span>
                         </div>
-                        <div class="app-content">
-                            <div class="my-sim-bar">
-                                <i class="bi bi-sim-fill"></i>
-                                <span>Cartela Mea: <strong id="my-phone-sim-num">0722-149-802</strong></span>
-                            </div>
 
+                        <div class="app-content dialer-content-body">
                             <div class="dialer-wrapper">
-                                <div class="dialer-display" id="dial-number">--- --- ---</div>
+                                <div class="dialer-display" id="dial-number"></div>
+
                                 <div class="dial-pad">
-                                    <button class="dial-btn" data-key="1">1</button>
-                                    <button class="dial-btn" data-key="2">2</button>
-                                    <button class="dial-btn" data-key="3">3</button>
-                                    <button class="dial-btn" data-key="4">4</button>
-                                    <button class="dial-btn" data-key="5">5</button>
-                                    <button class="dial-btn" data-key="6">6</button>
-                                    <button class="dial-btn" data-key="7">7</button>
-                                    <button class="dial-btn" data-key="8">8</button>
-                                    <button class="dial-btn" data-key="9">9</button>
-                                    <button class="dial-btn" data-key="*">*</button>
-                                    <button class="dial-btn" data-key="0">0</button>
-                                    <button class="dial-btn" data-key="#">#</button>
+                                    <button class="dial-btn" data-key="1"><span class="dial-num">1</span><span class="dial-sub"></span></button>
+                                    <button class="dial-btn" data-key="2"><span class="dial-num">2</span><span class="dial-sub">A B C</span></button>
+                                    <button class="dial-btn" data-key="3"><span class="dial-num">3</span><span class="dial-sub">D E F</span></button>
+                                    <button class="dial-btn" data-key="4"><span class="dial-num">4</span><span class="dial-sub">G H I</span></button>
+                                    <button class="dial-btn" data-key="5"><span class="dial-num">5</span><span class="dial-sub">J K L</span></button>
+                                    <button class="dial-btn" data-key="6"><span class="dial-num">6</span><span class="dial-sub">M N O</span></button>
+                                    <button class="dial-btn" data-key="7"><span class="dial-num">7</span><span class="dial-sub">P Q R S</span></button>
+                                    <button class="dial-btn" data-key="8"><span class="dial-num">8</span><span class="dial-sub">T U V</span></button>
+                                    <button class="dial-btn" data-key="9"><span class="dial-num">9</span><span class="dial-sub">W X Y Z</span></button>
+                                    <button class="dial-btn" data-key="*"><span class="dial-num">*</span><span class="dial-sub"></span></button>
+                                    <button class="dial-btn" data-key="0"><span class="dial-num">0</span><span class="dial-sub">+</span></button>
+                                    <button class="dial-btn" data-key="#"><span class="dial-num">#</span><span class="dial-sub"></span></button>
                                 </div>
-                                <button class="btn-call-action" id="btn-start-call"><i class="bi bi-telephone-fill"></i></button>
+
+                                <div class="dialer-action-row">
+                                    <button class="btn-call-action" id="btn-start-call"><i class="bi bi-telephone-fill"></i></button>
+                                    <button class="btn-dial-delete" id="btn-dial-backspace" style="display:none;"><i class="bi bi-backspace-fill"></i></button>
+                                </div>
                             </div>
+                        </div>
+
+                        <!-- Authentic iOS Phone Tab Bar -->
+                        <div class="ios-phone-tab-bar">
+                            <div class="phone-tab-item"><i class="bi bi-star-fill"></i><span>Favorite</span></div>
+                            <div class="phone-tab-item"><i class="bi bi-clock-fill"></i><span>Recente</span></div>
+                            <div class="phone-tab-item"><i class="bi bi-person-crop-circle-fill"></i><span>Contacte</span></div>
+                            <div class="phone-tab-item active-phone-tab"><i class="bi bi-grid-3x3-gap-fill"></i><span>Tastatură</span></div>
+                            <div class="phone-tab-item"><i class="bi bi-recording"></i><span>Mesaj vocal</span></div>
                         </div>
                     </div>
 
                     <!-- ============================================================
-                         9. MESSAGES APP SCREEN
+                         9. AUTHENTIC APPLE iOS 16 iMESSAGE APP SCREEN
                          ============================================================ -->
                     <div id="app-messages" class="app-screen">
-                        <div class="app-header">
-                            <button class="back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
-                            <h2>Mesaje SMS</h2>
+                        <div class="imessage-header-nav">
+                            <button class="back-btn imessage-edit-btn">Editare</button>
+                            <h2>Mesaje</h2>
+                            <button class="imessage-compose-btn"><i class="bi bi-square-pencil"></i></button>
                         </div>
-                        <div class="app-content">
-                            <div class="msg-list">
-                                <div class="msg-item">
-                                    <div class="msg-avatar"><i class="bi bi-person-fill"></i></div>
-                                    <div class="msg-info">
-                                        <h4>Maze Bank Alerts</h4>
-                                        <p>Ai primit un transfer de $5,000.</p>
+
+                        <div class="imessage-search-box">
+                            <i class="bi bi-search"></i>
+                            <input type="text" placeholder="Caută" autocomplete="off">
+                        </div>
+
+                        <div class="app-content imessage-content-body">
+                            <div class="imessage-thread-list">
+                                <div class="imessage-thread-item">
+                                    <div class="imessage-avatar bank-avatar">
+                                        <i class="bi bi-bank"></i>
                                     </div>
-                                    <span class="msg-time">12:30</span>
+                                    <div class="imessage-meta">
+                                        <div class="imessage-top-line">
+                                            <h4>Maze Bank Alerts</h4>
+                                            <span class="imessage-time">12:30</span>
+                                        </div>
+                                        <div class="imessage-snippet-line">
+                                            <p>Ai primit un transfer de $5,000.</p>
+                                            <i class="bi bi-chevron-right imessage-arrow"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
