@@ -849,17 +849,24 @@ $(function () {
         $(this).toggleClass('active-cc');
     });
 
-    // Screen Brightness Slider
+    // Screen Brightness Capsule Slider
     $('#slider-brightness').on('input', function () {
         var val = parseInt($(this).val());
         var opacity = (100 - val) / 100;
         $('#brightness-filter').css('opacity', opacity);
+        $('#cc-brightness-fill').css('height', val + '%');
     });
 
-    // Sound Volume Slider
+    // Sound Volume Capsule Slider
     $('#slider-volume').on('input', function () {
         var val = parseInt($(this).val());
         phoneVolume = val / 100;
+        $('#cc-volume-fill').css('height', val + '%');
+    });
+
+    // DND Shortcut
+    $(document).on('click', '#cc-btn-dnd', function () {
+        $(this).toggleClass('active-qbtn');
     });
 
     // Flashlight Shortcut

@@ -705,16 +705,19 @@ html, body {
     background: transparent !important;
 }
 
-/* iOS CONTROL CENTER OVERLAY */
+/* ============================================================
+   AUTHENTIC APPLE iOS 16 CONTROL CENTER OVERLAY STYLING
+   ============================================================ */
 .control-center-overlay {
     position: absolute;
     inset: 0;
     z-index: 800;
-    background: rgba(12, 12, 18, 0.92);
-    backdrop-filter: blur(28px);
+    background: rgba(15, 15, 22, 0.85);
+    backdrop-filter: blur(40px) saturate(190%);
+    -webkit-backdrop-filter: blur(40px) saturate(190%);
     display: none;
     flex-direction: column;
-    padding: 16px;
+    padding: 50px 16px 20px 16px;
     color: #ffffff;
     animation: slideDownCC 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -728,72 +731,67 @@ html, body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.cc-header {
+.cc-content-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 14px;
-    font-weight: 800;
-    margin-bottom: 14px;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
 }
 
-.cc-close-btn {
-    background: rgba(255, 255, 255, 0.15);
-    border: none;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    color: #ffffff;
-    font-size: 18px;
+.cc-row {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer !important;
+    gap: 12px;
+    width: 100%;
 }
 
-.cc-grid {
+.cc-top-modules {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-bottom: 14px;
 }
 
 .cc-card {
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 18px;
-    padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(25px);
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    aspect-ratio: 1;
 }
 
+/* Connectivity 2x2 Inner Grid */
 .cc-conn-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 8px;
 }
 
 .cc-icon-btn {
-    aspect-ratio: 1;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2px;
     font-size: 16px;
+    color: #ffffff;
     cursor: pointer !important;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cc-icon-btn span {
-    font-size: 8px;
-    font-weight: 700;
+.cc-icon-btn:active {
+    transform: scale(0.9);
 }
 
-.cc-icon-btn.active-cc {
+.cc-icon-btn.active-cc.blue-active {
     background: #0a84ff;
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(10, 132, 255, 0.4);
+}
+
+.cc-icon-btn.active-cc.green-active {
+    background: #30d158;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(48, 209, 88, 0.4);
 }
 
 .cc-icon-btn.airplane-active {
@@ -802,85 +800,159 @@ html, body {
     box-shadow: 0 4px 12px rgba(255, 159, 10, 0.4);
 }
 
+/* Media Player 2x2 Card */
 .cc-media-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 12px 10px;
 }
 
-.media-info h4 {
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.media-info p {
-    font-size: 10.5px;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.media-controls {
+.cc-media-top {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    font-size: 16px;
-    margin-top: 10px;
+    gap: 8px;
 }
 
-.media-play-btn {
+.cc-media-art {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #222;
+    flex-shrink: 0;
+}
+
+.cc-media-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cc-media-text {
+    overflow: hidden;
+}
+
+.cc-media-text h4 {
+    font-size: 11.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cc-media-text p {
+    font-size: 9.5px;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cc-media-ctrls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 0 4px;
+}
+
+.cc-media-ctrls i {
+    cursor: pointer !important;
+    transition: transform 0.15s ease;
+}
+
+.cc-media-ctrls i:active {
+    transform: scale(0.85);
+}
+
+.cc-play-icon {
     font-size: 24px;
     color: #0a84ff;
-    cursor: pointer !important;
 }
 
-/* Brightness & Volume Sliders */
+/* Vertical Capsule Sliders */
 .cc-sliders-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-bottom: 14px;
+    height: 135px;
 }
 
-.cc-slider-box {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 18px;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.cc-slider-box i {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.cc-slider-box input[type="range"] {
+.cc-vertical-slider-box {
+    position: relative;
     width: 100%;
-    accent-color: #0a84ff;
-    cursor: pointer !important;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(20px);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
-/* Quick Shortcuts */
-.cc-quick-grid {
+.cc-vfill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-radius: 22px;
+    transition: height 0.05s linear;
+    pointer-events: none;
+}
+
+.cc-vicon {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.cc-vrange {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer !important;
+    z-index: 10;
+}
+
+/* Quick Action Shortcuts (4x1 Grid) */
+.cc-actions-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
-.cc-qbtn {
-    height: 48px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 14px;
+.cc-action-btn {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 18px;
+    color: #ffffff;
     cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cc-qbtn.active-qbtn {
+.cc-action-btn:active {
+    transform: scale(0.9);
+}
+
+.cc-action-btn.active-qbtn {
     background: #ffca28;
     color: #000000;
 }

@@ -101,62 +101,71 @@
                 <div class="screen-body">
 
                     <!-- ============================================================
-                         iOS CONTROL CENTER OVERLAY (iOS 16)
+                         AUTHENTIC APPLE iOS 16 CONTROL CENTER OVERLAY
                          ============================================================ -->
                     <div id="control-center" class="control-center-overlay">
-                        <div class="cc-header">
-                            <span>Centru de Control</span>
-                            <button id="btn-close-cc" class="cc-close-btn"><i class="bi bi-x"></i></button>
-                        </div>
+                        <div class="cc-content-container">
+                            <!-- Row 1: Connectivity Card + Media Player Card -->
+                            <div class="cc-row cc-top-modules">
+                                <!-- Connectivity 2x2 Card -->
+                                <div class="cc-card cc-conn-card">
+                                    <div class="cc-icon-btn" id="btn-toggle-airplane" title="Mod Avion">
+                                        <i class="bi bi-airplane-fill"></i>
+                                    </div>
+                                    <div class="cc-icon-btn active-cc green-active" id="btn-toggle-5g" title="Date Mobil 5G">
+                                        <i class="bi bi-reception-4"></i>
+                                    </div>
+                                    <div class="cc-icon-btn active-cc blue-active" id="btn-toggle-wifi" title="WiFi">
+                                        <i class="bi bi-wifi"></i>
+                                    </div>
+                                    <div class="cc-icon-btn active-cc blue-active" id="btn-toggle-bt" title="Bluetooth">
+                                        <i class="bi bi-bluetooth"></i>
+                                    </div>
+                                </div>
 
-                        <div class="cc-grid">
-                            <!-- Connectivity Card -->
-                            <div class="cc-card cc-conn-card">
-                                <div class="cc-icon-btn" id="btn-toggle-airplane" title="Mod Avion">
-                                    <i class="bi bi-airplane-fill"></i>
-                                </div>
-                                <div class="cc-icon-btn active-cc" id="btn-toggle-5g" title="Date Mobil 5G">
-                                    <i class="bi bi-reception-4"></i>
-                                </div>
-                                <div class="cc-icon-btn active-cc" id="btn-toggle-wifi" title="WiFi">
-                                    <i class="bi bi-wifi"></i>
-                                </div>
-                                <div class="cc-icon-btn active-cc" id="btn-toggle-bt" title="Bluetooth">
-                                    <i class="bi bi-bluetooth"></i>
+                                <!-- Media Player 2x2 Card -->
+                                <div class="cc-card cc-media-card">
+                                    <div class="cc-media-top">
+                                        <div class="cc-media-art">
+                                            <img id="cc-media-cover" src="https://i.ytimg.com/vi/5qm8PH4skOy/hqdefault.jpg" alt="Cover">
+                                        </div>
+                                        <div class="cc-media-text">
+                                            <h4 id="cc-song-title">In Da Club</h4>
+                                            <p id="cc-song-sub">50 Cent</p>
+                                        </div>
+                                    </div>
+                                    <div class="cc-media-ctrls">
+                                        <i class="bi bi-skip-backward-fill" id="cc-btn-prev"></i>
+                                        <i class="bi bi-pause-fill cc-play-icon" id="cc-play-pause-btn"></i>
+                                        <i class="bi bi-skip-forward-fill" id="cc-btn-next"></i>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Media Player Widget Card -->
-                            <div class="cc-card cc-media-card">
-                                <div class="media-info">
-                                    <h4 id="cc-song-title">In Da Club</h4>
-                                    <p id="cc-song-sub">50 Cent</p>
+                            <!-- Row 2: Vertical Apple Capsule Sliders (Brightness & Volume) -->
+                            <div class="cc-row cc-sliders-row">
+                                <!-- Vertical Brightness Slider -->
+                                <div class="cc-vertical-slider-box" id="box-slider-brightness">
+                                    <div class="cc-vfill" id="cc-brightness-fill" style="height: 100%;"></div>
+                                    <i class="bi bi-sun-fill cc-vicon"></i>
+                                    <input type="range" id="slider-brightness" min="20" max="100" value="100" class="cc-vrange">
                                 </div>
-                                <div class="media-controls">
-                                    <i class="bi bi-skip-backward-fill" id="cc-btn-prev"></i>
-                                    <i class="bi bi-pause-fill media-play-btn" id="cc-play-pause-btn"></i>
-                                    <i class="bi bi-skip-forward-fill" id="cc-btn-next"></i>
+
+                                <!-- Vertical Volume Slider -->
+                                <div class="cc-vertical-slider-box" id="box-slider-volume">
+                                    <div class="cc-vfill" id="cc-volume-fill" style="height: 80%;"></div>
+                                    <i class="bi bi-volume-up-fill cc-vicon"></i>
+                                    <input type="range" id="slider-volume" min="0" max="100" value="80" class="cc-vrange">
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Brightness & Volume Sliders -->
-                        <div class="cc-sliders-row">
-                            <div class="cc-slider-box">
-                                <i class="bi bi-sun-fill"></i>
-                                <input type="range" id="slider-brightness" min="20" max="100" value="100">
+                            <!-- Row 3: 4x1 Quick Shortcut Actions -->
+                            <div class="cc-row cc-actions-row">
+                                <div class="cc-action-btn" id="cc-btn-flashlight" title="Lanternă"><i class="bi bi-flashlight"></i></div>
+                                <div class="cc-action-btn" id="cc-btn-dnd" title="Nu deranjați"><i class="bi bi-moon-fill"></i></div>
+                                <div class="cc-action-btn" id="cc-btn-calculator" title="Calculator"><i class="bi bi-calculator-fill"></i></div>
+                                <div class="cc-action-btn" id="cc-btn-camera" title="Cameră"><i class="bi bi-camera-fill"></i></div>
                             </div>
-                            <div class="cc-slider-box">
-                                <i class="bi bi-volume-up-fill"></i>
-                                <input type="range" id="slider-volume" min="0" max="100" value="80">
-                            </div>
-                        </div>
-
-                        <!-- Quick Shortcuts Grid -->
-                        <div class="cc-quick-grid">
-                            <div class="cc-qbtn" id="cc-btn-flashlight"><i class="bi bi-flashlight"></i></div>
-                            <div class="cc-qbtn" id="cc-btn-calculator"><i class="bi bi-calculator-fill"></i></div>
-                            <div class="cc-qbtn" id="cc-btn-camera"><i class="bi bi-camera-fill"></i></div>
                         </div>
                     </div>
 
