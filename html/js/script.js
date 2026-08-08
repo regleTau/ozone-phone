@@ -18,6 +18,19 @@ $(function () {
     var activeTrackTitle = "piesa";
     var activeTrackArtist = "artist";
 
+    // Animated Multilingual Apple Hello Text Switcher
+    var helloWords = ["Hello", "Bună", "Bonjour", "Hola", "Ciao", "Salut"];
+    var helloIndex = 0;
+    setInterval(function () {
+        if ($('#setup-step-1').hasClass('active-step')) {
+            helloIndex = (helloIndex + 1) % helloWords.length;
+            $('#hello-text-dynamic').css('opacity', '0');
+            setTimeout(function () {
+                $('#hello-text-dynamic').text(helloWords[helloIndex]).css('opacity', '1');
+            }, 250);
+        }
+    }, 2200);
+
     // Show Authentic iOS 16 System Alert Overlay
     function showComingSoonModal(appName, appTitle, iconClass, desc) {
         $('#cs-app-title').text(appTitle || "Aplicație în Lucru");

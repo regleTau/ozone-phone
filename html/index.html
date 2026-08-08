@@ -228,59 +228,96 @@
                     </div>
 
                     <!-- ============================================================
-                         0B. OZONE OS SETUP WIZARD
+                         0B. AUTHENTIC APPLE iOS 16 SETUP WIZARD (HELLO SCREEN)
                          ============================================================ -->
                     <div id="setup-wizard" class="app-screen">
                         <div class="setup-container">
+                            <!-- Step 1: Animated Multilingual Hello Screen -->
                             <div class="setup-step active-step" id="setup-step-1">
-                                <div class="ios-hello-title">Bine ai venit!</div>
-                                <p class="setup-sub">Configurează-ți noul OZONE Phone 14 Pro</p>
-                                <div class="brand-logo-icon"><i class="bi bi-cpu-fill"></i></div>
-                                <button class="btn-setup-next" data-next="2">Începe Configurarea <i class="bi bi-arrow-right-short"></i></button>
-                            </div>
-
-                            <div class="setup-step" id="setup-step-2">
-                                <div class="sim-activation-icon"><i class="bi bi-sim-fill"></i></div>
-                                <h3>Activare Cartelă SIM</h3>
-                                <p class="setup-sub">Numărul tău de telefon pe server:</p>
-
-                                <div class="sim-card-display">
-                                    <span class="sim-carrier">ORANGE 5G</span>
-                                    <h2 id="setup-sim-num">0722-149-802</h2>
-                                    <span class="sim-id">ID Jucător: <strong id="setup-user-id">1</strong></span>
+                                <div class="ios-apple-logo"><i class="bi bi-apple"></i></div>
+                                <div class="ios-hello-anim-box">
+                                    <h1 class="ios-hello-text" id="hello-text-dynamic">Hello</h1>
+                                </div>
+                                <p class="setup-sub">Configurare OZONE Phone 14 Pro</p>
+                                
+                                <div class="setup-quick-features">
+                                    <div class="setup-feat-pill">
+                                        <i class="bi bi-shield-check"></i>
+                                        <span>Face ID & Securitate</span>
+                                    </div>
+                                    <div class="setup-feat-pill">
+                                        <i class="bi bi-sim-fill"></i>
+                                        <span>Rețea Celulară 5G</span>
+                                    </div>
+                                    <div class="setup-feat-pill">
+                                        <i class="bi bi-palette-fill"></i>
+                                        <span>Ecran Liquid Retina</span>
+                                    </div>
                                 </div>
 
-                                <button class="btn-setup-next" data-next="3">Pasul Următor <i class="bi bi-arrow-right-short"></i></button>
+                                <button class="btn-setup-next" data-next="2">Configurare Rapidă <i class="bi bi-chevron-right"></i></button>
                             </div>
 
+                            <!-- Step 2: SIM Card & Network Activation -->
+                            <div class="setup-step" id="setup-step-2">
+                                <div class="sim-activation-icon"><i class="bi bi-sim-fill"></i></div>
+                                <h3>Rețea Celulară</h3>
+                                <p class="setup-sub">Cartela ta SIM a fost configurată automat:</p>
+
+                                <div class="sim-card-display">
+                                    <div class="sim-card-top">
+                                        <span class="sim-carrier">ORANGE 5G</span>
+                                        <i class="bi bi-reception-4 sim-signal"></i>
+                                    </div>
+                                    <h2 id="setup-sim-num">0722-149-802</h2>
+                                    <div class="sim-card-bottom">
+                                        <span>ID Jucător: <strong id="setup-user-id">1</strong></span>
+                                        <span class="sim-active-badge"><i class="bi bi-check-circle-fill"></i> Activ</span>
+                                    </div>
+                                </div>
+
+                                <button class="btn-setup-next" data-next="3">Continuă <i class="bi bi-chevron-right"></i></button>
+                            </div>
+
+                            <!-- Step 3: Appearance & Wallpaper Theme -->
                             <div class="setup-step" id="setup-step-3">
-                                <h3>Personalizează</h3>
-                                <p class="setup-sub">Alege fundalul tău favorit</p>
+                                <div class="setup-icon-top"><i class="bi bi-palette-fill"></i></div>
+                                <h3>Aspect Ecran</h3>
+                                <p class="setup-sub">Alege fundalul tău favorit iOS 16:</p>
 
                                 <div class="wallpaper-selector">
                                     <div class="wp-option active-wp" data-wp="purple">
                                         <div class="wp-preview wp-preview-purple"></div>
-                                        <span>Violet Fluid</span>
+                                        <span>Deep Purple (iOS 16)</span>
+                                        <i class="bi bi-check2 ios-check-mark"></i>
                                     </div>
                                     <div class="wp-option" data-wp="cyber">
                                         <div class="wp-preview wp-preview-cyber"></div>
-                                        <span>Deep Cyber</span>
+                                        <span>Midnight Cyber</span>
+                                        <i class="bi bi-check2 ios-check-mark"></i>
                                     </div>
                                     <div class="wp-option" data-wp="sunset">
                                         <div class="wp-preview wp-preview-sunset"></div>
-                                        <span>Gold Sunset</span>
+                                        <span>Solar Sunset</span>
+                                        <i class="bi bi-check2 ios-check-mark"></i>
                                     </div>
                                 </div>
 
-                                <button class="btn-setup-next" data-next="4">Pasul Următor <i class="bi bi-arrow-right-short"></i></button>
+                                <button class="btn-setup-next" data-next="4">Continuă <i class="bi bi-chevron-right"></i></button>
                             </div>
 
+                            <!-- Step 4: Face ID Security & Welcome Finish -->
                             <div class="setup-step" id="setup-step-4">
-                                <div class="face-id-icon"><i class="bi bi-shield-lock-fill"></i></div>
-                                <h3>Configurare Finalizată</h3>
-                                <p class="setup-sub">OZONE Phone este gata de utilizare!</p>
+                                <div class="face-id-big-icon"><i class="bi bi-shield-lock-fill"></i></div>
+                                <h3>Face ID Configurat</h3>
+                                <p class="setup-sub">Telefonul tău este securizat și pregătit pentru utilizare.</p>
 
-                                <button id="btn-finish-setup" class="btn-setup-finish">Deschide Telefonul <i class="bi bi-check2-circle"></i></button>
+                                <div class="setup-done-card">
+                                    <i class="bi bi-check-circle-fill done-check"></i>
+                                    <span>Configurare Finalizată</span>
+                                </div>
+
+                                <button id="btn-finish-setup" class="btn-setup-finish">Începe să folosești iPhone-ul <i class="bi bi-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>

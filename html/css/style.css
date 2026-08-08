@@ -440,6 +440,210 @@ html, body {
     background: rgba(255, 255, 255, 0.1);
 }
 
+/* ============================================================
+   AUTHENTIC APPLE iOS SETUP WIZARD (HELLO SCREEN) STYLING
+   ============================================================ */
+#setup-wizard {
+    background: linear-gradient(180deg, #09090e 0%, #12121c 100%) !important;
+}
+
+.setup-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 22px 20px 22px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.setup-step {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    animation: fadeInApp 0.3s ease forwards;
+}
+
+.setup-step.active-step {
+    display: flex;
+}
+
+.ios-apple-logo {
+    font-size: 38px;
+    color: #ffffff;
+    margin-top: 10px;
+    filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.2));
+}
+
+.ios-hello-anim-box {
+    margin: 20px 0 10px 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ios-hello-text {
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #ffffff 0%, #d1d1d6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: opacity 0.25s ease;
+    animation: pulseHello 3s infinite ease-in-out;
+}
+
+@keyframes pulseHello {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+}
+
+.setup-sub {
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.setup-quick-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.setup-feat-pill {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.setup-feat-pill i {
+    font-size: 18px;
+    color: #007aff;
+}
+
+.setup-icon-top {
+    font-size: 42px;
+    color: #007aff;
+    margin-top: 20px;
+}
+
+.btn-setup-next, .btn-setup-finish {
+    width: 100%;
+    height: 48px;
+    border-radius: 16px;
+    background: #007aff;
+    border: none;
+    color: #ffffff;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(0, 122, 255, 0.4);
+    transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.btn-setup-next:active, .btn-setup-finish:active {
+    transform: scale(0.96);
+}
+
+.btn-setup-finish {
+    background: #34c759;
+    box-shadow: 0 8px 24px rgba(52, 199, 89, 0.4);
+}
+
+.sim-card-display {
+    background: linear-gradient(135deg, #1c1c24 0%, #2c2c36 100%);
+    border-radius: 20px;
+    padding: 16px;
+    border: 1px solid rgba(255, 149, 0, 0.4);
+    width: 100%;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.sim-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.sim-carrier {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #ff9500;
+}
+
+.sim-signal {
+    color: #34c759;
+    font-size: 14px;
+}
+
+.sim-card-display h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.sim-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.sim-active-badge {
+    color: #34c759;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.face-id-big-icon {
+    font-size: 54px;
+    color: #34c759;
+    margin: 20px 0 10px 0;
+    filter: drop-shadow(0 6px 18px rgba(52, 199, 89, 0.35));
+}
+
+.setup-done-card {
+    background: rgba(52, 199, 89, 0.12);
+    border: 1px solid rgba(52, 199, 89, 0.3);
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #34c759;
+    font-size: 13.5px;
+    font-weight: 700;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 .island-camera {
     width: 9px;
     height: 9px;
@@ -1761,74 +1965,6 @@ body.camera-mode-on,
     50% { opacity: 1; }
 }
 
-/* SETUP WIZARD SCREEN */
-.setup-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 24px 20px;
-    color: #ffffff;
-    text-align: center;
-    background: #090312;
-}
-
-.setup-step {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.setup-step.active-step {
-    display: flex;
-}
-
-.ios-hello-title {
-    font-size: 30px;
-    font-weight: 800;
-    margin-bottom: 6px;
-    background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.setup-sub {
-    font-size: 12.5px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 20px;
-}
-
-.brand-logo-icon {
-    font-size: 56px;
-    color: #007aff;
-    margin: 24px 0;
-}
-
-.btn-setup-next, .btn-setup-finish {
-    width: 100%;
-    height: 46px;
-    border-radius: 14px;
-    background: #007aff;
-    border: none;
-    color: #ffffff;
-    font-size: 14.5px;
-    font-weight: 700;
-    cursor: pointer !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: auto;
-    box-shadow: 0 8px 20px rgba(0, 122, 255, 0.4);
-}
-
-.btn-setup-finish {
-    background: #34c759;
-    box-shadow: 0 8px 20px rgba(52, 199, 89, 0.4);
-}
-
 /* SETTINGS & LISTS */
 .ios-profile-card {
     background: rgba(255, 255, 255, 0.08);
@@ -2338,36 +2474,6 @@ body.camera-mode-on,
 }
 
 /* SIM CARD DISPLAY */
-.sim-card-display {
-    background: linear-gradient(135deg, #ff9500 0%, #d67c00 100%);
-    border-radius: 16px;
-    padding: 14px;
-    color: #ffffff;
-    width: 100%;
-    box-shadow: 0 10px 25px rgba(255, 149, 0, 0.3);
-    margin-bottom: 16px;
-    text-align: left;
-}
-
-.sim-carrier {
-    font-size: 9.5px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.sim-card-display h2, .sim-card-display h3 {
-    font-size: 20px;
-    font-weight: 800;
-    margin: 6px 0;
-    letter-spacing: 1px;
-}
-
-.sim-id {
-    font-size: 10.5px;
-    color: rgba(255, 255, 255, 0.85);
-}
-
 .my-sim-bar {
     background: rgba(255, 149, 0, 0.16);
     border: 1px solid rgba(255, 149, 0, 0.3);
@@ -2386,9 +2492,9 @@ body.camera-mode-on,
 }
 
 .sim-activation-icon {
-    font-size: 48px;
+    font-size: 44px;
     color: #ff9500;
-    margin-bottom: 10px;
+    margin-top: 14px;
 }
 
 /* CALL OVERLAY */
