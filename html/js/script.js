@@ -18,14 +18,14 @@ $(function () {
     var activeTrackTitle = "piesa";
     var activeTrackArtist = "artist";
 
-    // Show Sleek iOS 16 Coming Soon Overlay
+    // Show Authentic iOS 16 System Alert Overlay
     function showComingSoonModal(appName, appTitle, iconClass, desc) {
         $('#cs-app-title').text(appTitle || "Aplicație în Lucru");
-        $('#cs-app-icon').html('<i class="bi ' + (iconClass || 'bi-tools') + '"></i>');
+        $('#cs-app-icon').removeClass('icon-yt icon-spotify icon-camera').addClass('icon-' + appName).html('<i class="bi ' + (iconClass || 'bi-tools') + '"></i>');
         if (desc) {
             $('#cs-app-desc').text(desc);
         } else {
-            $('#cs-app-desc').text('Aplicația ' + (appTitle || '') + ' este în curs de dezvoltare activă (W.I.P.) și va fi lansată curând pe OZONE OS!');
+            $('#cs-app-desc').text('Aplicația ' + (appTitle || '') + ' este în curs de dezvoltare activă pe OZONE OS.');
         }
         $('#coming-soon-modal').addClass('active-cs-modal');
     }
@@ -701,7 +701,7 @@ $(function () {
 
     // CAMERA SHORTCUTS & FLIP HANDLERS
     $(document).on('click', '#shortcut-camera, #cc-btn-camera', function () {
-        showComingSoonModal("camera", "Cameră 3D", "bi-camera-fill", "Aplicația de Cameră 3D este în curs de dezvoltare activă (W.I.P.) pe OZONE OS!");
+        showComingSoonModal("camera", "Cameră 3D", "bi-camera-fill", "Modulul de Cameră 3D se află în dezvoltare activă (W.I.P.). Revenim curând!");
     });
 
     $(document).on('click', '.cam-switch-flip', function () {
@@ -716,10 +716,10 @@ $(function () {
         var appName = btn.attr('data-app');
 
         if (appName === "youtube") {
-            showComingSoonModal("youtube", "YouTube Mobile", "bi-youtube", "Aplicația YouTube Mobile este în curs de dezvoltare activă (W.I.P.) pe OZONE OS!");
+            showComingSoonModal("yt", "YouTube Mobile", "bi-youtube", "Aplicația YouTube Mobile se află în dezvoltare activă (W.I.P.). Revenim curând!");
             return;
         } else if (appName === "spotify") {
-            showComingSoonModal("spotify", "Spotify Music", "bi-spotify", "Aplicația Spotify Music este în curs de dezvoltare activă (W.I.P.) pe OZONE OS!");
+            showComingSoonModal("spotify", "Spotify Music", "bi-spotify", "Aplicația Spotify Music se află în dezvoltare activă (W.I.P.). Revenim curând!");
             return;
         }
 
@@ -898,13 +898,13 @@ $(function () {
         if (appName) {
             // Handle Coming Soon Apps (YouTube, Spotify, Camera)
             if (appName === "youtube") {
-                showComingSoonModal("youtube", "YouTube Mobile", "bi-youtube", "Aplicația YouTube Mobile este în curs de dezvoltare activă (W.I.P.) pe OZONE OS!");
+                showComingSoonModal("yt", "YouTube Mobile", "bi-youtube", "Aplicația YouTube Mobile se află în dezvoltare activă (W.I.P.). Revenim curând!");
                 return;
             } else if (appName === "spotify") {
-                showComingSoonModal("spotify", "Spotify Music", "bi-spotify", "Aplicația Spotify Music este în curs de dezvoltare activă (W.I.P.) pe OZONE OS!");
+                showComingSoonModal("spotify", "Spotify Music", "bi-spotify", "Aplicația Spotify Music se află în dezvoltare activă (W.I.P.). Revenim curând!");
                 return;
             } else if (appName === "camera") {
-                showComingSoonModal("camera", "Cameră 3D", "bi-camera-fill", "Aplicația de Cameră 3D este în curs de dezvoltare activă (W.I.P.) pe OZONE OS!");
+                showComingSoonModal("camera", "Cameră 3D", "bi-camera-fill", "Modulul de Cameră 3D se află în dezvoltare activă (W.I.P.). Revenim curând!");
                 return;
             }
 
