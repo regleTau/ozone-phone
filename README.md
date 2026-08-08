@@ -31,9 +31,8 @@ An ultra-modern, authentic **iOS 16 (iPhone 14 Pro Max)** styled mobile phone re
 - **🎧 Spotify Music App** — `🚧 COMING SOON / UNDER DEVELOPMENT`:
   - *Currently in active development!* `#121212` dark green mobile design, album art cover player, spinning vinyl disc, and background audio streaming engine.
 
-- **📸 3D Camera & Photos Gallery**:
-  - Real-time GTA V 3D camera viewfinder with selfie character orientation.
-  - Photo gallery with fullscreen lightbox preview.
+- **📸 3D Camera & Photos Gallery** — `🚧 COMING SOON / UNDER DEVELOPMENT`:
+  - *Currently in active development!* Real-time GTA V 3D camera viewfinder with selfie character orientation and photo gallery preview.
 
 - **🏦 Maze Bank & Vehicle Garage**:
   - Direct player-to-player money transfers.
