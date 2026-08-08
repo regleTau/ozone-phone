@@ -1,5 +1,5 @@
 /* ============================================================
-   AUTHENTIC HUMAN CRAFTED APPLE iOS 16 DESIGN SYSTEM
+   AUTHENTIC APPLE iOS 16 / iPHONE 14 PRO MAX DESIGN SYSTEM
    ============================================================ */
 
 * {
@@ -13,7 +13,7 @@
     -ms-overflow-style: none !important;
 }
 
-/* HIDE ALL UGLY SCROLLBARS STRICTLY */
+/* HIDE ALL SCROLLBARS STRICTLY */
 ::-webkit-scrollbar {
     width: 0px !important;
     height: 0px !important;
@@ -71,7 +71,7 @@ html, body {
     transition: background 0.2s ease;
 }
 
-/* Side Buttons */
+/* Physical Side Buttons */
 .side-btn {
     position: absolute;
     background: #242428;
@@ -110,7 +110,7 @@ html, body {
     pointer-events: auto !important;
 }
 
-/* Dynamic Wallpapers */
+/* Authentic Stock iOS 16 Wallpapers */
 .phone-wallpaper {
     position: absolute;
     inset: 0;
@@ -403,12 +403,12 @@ html, body {
     font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.8px;
-    color: #ff9500;
-    background: rgba(255, 149, 0, 0.18);
+    color: #ff9f0a;
+    background: rgba(255, 159, 10, 0.18);
     padding: 2px 8px;
     border-radius: 10px;
     margin-bottom: 8px;
-    border: 1px solid rgba(255, 149, 0, 0.25);
+    border: 1px solid rgba(255, 159, 10, 0.25);
 }
 
 .cs-content-box p {
@@ -442,7 +442,7 @@ html, body {
 }
 
 /* ============================================================
-   AUTHENTIC HUMAN CRAFTED iOS SETUP WIZARD STYLING (#000000)
+   AUTHENTIC iOS SETUP WIZARD STYLING (#000000)
    ============================================================ */
 #setup-wizard {
     background: #000000 !important;
@@ -592,7 +592,7 @@ html, body {
     font-size: 16px;
 }
 
-/* AUTHENTIC iOS SETUP BUTTON */
+/* AUTHENTIC iOS BUTTON */
 .btn-setup-next, .btn-setup-finish {
     width: 100%;
     height: 44px;
