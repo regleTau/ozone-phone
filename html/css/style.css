@@ -1,5 +1,5 @@
 /* ============================================================
-   AUTHENTIC APPLE iOS 16 / iPHONE 14 PRO MAX DESIGN SYSTEM
+   AUTHENTIC HUMAN CRAFTED APPLE iOS 16 DESIGN SYSTEM
    ============================================================ */
 
 * {
@@ -62,10 +62,10 @@ html, body {
     position: relative;
     width: 320px;
     height: 650px;
-    background: #16161a;
+    background: #000000;
     border-radius: 46px;
-    border: 8px solid #28282e;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    border: 8px solid #242428;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08);
     overflow: hidden !important;
     pointer-events: auto !important;
     transition: background 0.2s ease;
@@ -74,7 +74,7 @@ html, body {
 /* Side Buttons */
 .side-btn {
     position: absolute;
-    background: #28282e;
+    background: #242428;
     border-radius: 4px;
 }
 
@@ -120,21 +120,21 @@ html, body {
 
 .phone-wallpaper.wp-purple {
     background: 
-        radial-gradient(circle at 75% 20%, rgba(138, 43, 226, 0.6) 0%, transparent 55%),
-        radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.45) 0%, transparent 60%),
-        linear-gradient(160deg, #3d0e5e 0%, #18052e 50%, #090214 100%);
+        radial-gradient(circle at 75% 20%, rgba(138, 43, 226, 0.55) 0%, transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.4) 0%, transparent 60%),
+        linear-gradient(160deg, #2a0945 0%, #120324 50%, #06010e 100%);
 }
 
 .phone-wallpaper.wp-cyber {
     background: 
-        radial-gradient(circle at 50% 30%, rgba(0, 198, 255, 0.5) 0%, transparent 60%),
-        linear-gradient(160deg, #001122 0%, #002b47 50%, #000814 100%);
+        radial-gradient(circle at 50% 30%, rgba(0, 198, 255, 0.45) 0%, transparent 60%),
+        linear-gradient(160deg, #000c18 0%, #001f33 50%, #00040a 100%);
 }
 
 .phone-wallpaper.wp-sunset {
     background: 
-        radial-gradient(circle at 80% 20%, rgba(255, 149, 0, 0.6) 0%, transparent 55%),
-        linear-gradient(160deg, #8e2de2 0%, #4a00e0 50%, #15003b 100%);
+        radial-gradient(circle at 80% 20%, rgba(255, 149, 0, 0.5) 0%, transparent 55%),
+        linear-gradient(160deg, #6b1fb3 0%, #3600a3 50%, #0f002b 100%);
 }
 
 /* Status Bar Top (iOS 16) */
@@ -148,7 +148,7 @@ html, body {
     justify-content: space-between;
     color: #ffffff;
     font-size: 12.5px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .status-time {
@@ -291,7 +291,7 @@ html, body {
 
 .island-mini-info h4 {
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -442,207 +442,181 @@ html, body {
 }
 
 /* ============================================================
-   AUTHENTIC APPLE iOS SETUP WIZARD (HELLO SCREEN) STYLING
+   AUTHENTIC HUMAN CRAFTED iOS SETUP WIZARD STYLING (#000000)
    ============================================================ */
 #setup-wizard {
-    background: linear-gradient(180deg, #09090e 0%, #12121c 100%) !important;
+    background: #000000 !important;
 }
 
 .setup-container {
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 30px 22px 20px 22px;
+    padding: 24px 20px 24px 20px;
     color: #ffffff;
-    text-align: center;
 }
 
 .setup-step {
     display: none;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     height: 100%;
-    animation: fadeInApp 0.3s ease forwards;
+    animation: fadeInApp 0.25s ease forwards;
 }
 
 .setup-step.active-step {
     display: flex;
 }
 
-.ios-apple-logo {
-    font-size: 38px;
+.setup-top-icon {
+    font-size: 32px;
     color: #ffffff;
-    margin-top: 10px;
-    filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.2));
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
-.ios-hello-anim-box {
-    margin: 20px 0 10px 0;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.setup-top-icon.green-icon {
+    color: #30d158;
 }
 
 .ios-hello-text {
-    font-size: 44px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    background: linear-gradient(135deg, #ffffff 0%, #d1d1d6 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin-bottom: 4px;
     transition: opacity 0.25s ease;
-    animation: pulseHello 3s infinite ease-in-out;
 }
 
-@keyframes pulseHello {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.04); }
+.setup-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    color: #ffffff;
+    margin-bottom: 4px;
 }
 
 .setup-sub {
     font-size: 12.5px;
-    color: rgba(255, 255, 255, 0.65);
-    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    line-height: 1.35;
     margin-bottom: 20px;
+    max-width: 250px;
 }
 
-.setup-quick-features {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+/* AUTHENTIC iOS GROUPED INSET LIST CONTAINER */
+.ios-grouped-list {
     width: 100%;
-    margin-bottom: 20px;
+    background: #1c1c1e;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: auto;
 }
 
-.setup-feat-pill {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 16px;
-    padding: 12px 16px;
+.ios-row-item {
+    padding: 11px 14px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 13px;
-    font-weight: 600;
+    justify-content: space-between;
+    font-size: 12.5px;
+    font-weight: 500;
     color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.setup-feat-pill i {
-    font-size: 18px;
-    color: #007aff;
+.ios-row-item:last-child {
+    border-bottom: none;
 }
 
-.setup-icon-top {
-    font-size: 42px;
-    color: #007aff;
-    margin-top: 20px;
+.ios-row-icon {
+    font-size: 16px;
+    margin-right: 10px;
 }
 
+.ios-row-icon.blue { color: #0a84ff; }
+.ios-row-icon.orange { color: #ff9f0a; }
+.ios-row-icon.purple { color: #bf5af2; }
+
+.ios-row-val {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-left: auto;
+}
+
+.ios-row-val.green {
+    color: #30d158;
+    font-weight: 600;
+}
+
+.green {
+    color: #30d158 !important;
+}
+
+.text-center-row {
+    justify-content: center !important;
+    text-align: center;
+    font-weight: 600;
+    padding: 14px;
+}
+
+/* WALLPAPER SELECTOR IN GROUPED LIST */
+.wp-select-group .wp-option {
+    cursor: pointer !important;
+    transition: background 0.15s ease;
+}
+
+.wp-select-group .wp-option:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.wp-mini-preview {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+.wp-purple { background: linear-gradient(135deg, #3d0e5e, #18052e); }
+.wp-cyber { background: linear-gradient(135deg, #001122, #002b47); }
+.wp-sunset { background: linear-gradient(135deg, #ff9500, #4a00e0); }
+
+.wp-option.active-wp {
+    background: rgba(10, 132, 255, 0.12);
+}
+
+.wp-option.active-wp .ios-check-mark {
+    display: block;
+    color: #0a84ff;
+    font-size: 16px;
+}
+
+/* AUTHENTIC iOS SETUP BUTTON */
 .btn-setup-next, .btn-setup-finish {
     width: 100%;
-    height: 48px;
-    border-radius: 16px;
-    background: #007aff;
+    height: 44px;
+    border-radius: 12px;
+    background: #0a84ff;
     border: none;
     color: #ffffff;
-    font-size: 14.5px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    box-shadow: 0 8px 24px rgba(0, 122, 255, 0.4);
-    transition: transform 0.15s ease, background 0.2s ease;
+    margin-top: 14px;
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .btn-setup-next:active, .btn-setup-finish:active {
-    transform: scale(0.96);
+    opacity: 0.8;
+    transform: scale(0.98);
 }
 
 .btn-setup-finish {
-    background: #34c759;
-    box-shadow: 0 8px 24px rgba(52, 199, 89, 0.4);
-}
-
-.sim-card-display {
-    background: linear-gradient(135deg, #1c1c24 0%, #2c2c36 100%);
-    border-radius: 20px;
-    padding: 16px;
-    border: 1px solid rgba(255, 149, 0, 0.4);
-    width: 100%;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.sim-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-}
-
-.sim-carrier {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    color: #ff9500;
-}
-
-.sim-signal {
-    color: #34c759;
-    font-size: 14px;
-}
-
-.sim-card-display h2 {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.sim-card-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.sim-active-badge {
-    color: #34c759;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.face-id-big-icon {
-    font-size: 54px;
-    color: #34c759;
-    margin: 20px 0 10px 0;
-    filter: drop-shadow(0 6px 18px rgba(52, 199, 89, 0.35));
-}
-
-.setup-done-card {
-    background: rgba(52, 199, 89, 0.12);
-    border: 1px solid rgba(52, 199, 89, 0.3);
-    border-radius: 16px;
-    padding: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: #34c759;
-    font-size: 13.5px;
-    font-weight: 700;
-    width: 100%;
-    margin-bottom: 20px;
+    background: #30d158;
 }
 
 .island-camera {
@@ -766,15 +740,15 @@ html, body {
 }
 
 .cc-icon-btn.active-cc {
-    background: #007aff;
+    background: #0a84ff;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+    box-shadow: 0 4px 12px rgba(10, 132, 255, 0.4);
 }
 
 .cc-icon-btn.airplane-active {
-    background: #ff9500;
+    background: #ff9f0a;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(255, 149, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(255, 159, 10, 0.4);
 }
 
 .cc-media-card {
@@ -803,7 +777,7 @@ html, body {
 
 .media-play-btn {
     font-size: 24px;
-    color: #007aff;
+    color: #0a84ff;
     cursor: pointer !important;
 }
 
@@ -832,7 +806,7 @@ html, body {
 
 .cc-slider-box input[type="range"] {
     width: 100%;
-    accent-color: #007aff;
+    accent-color: #0a84ff;
     cursor: pointer !important;
 }
 
@@ -914,7 +888,7 @@ body.camera-mode-on,
 .is-camera-open .iphone-frame {
     background: transparent !important;
     background-color: transparent !important;
-    border: 8px solid #28282e !important;
+    border: 8px solid #242428 !important;
     box-shadow: 0 0 0 2px #18181c, 0 12px 35px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -925,49 +899,6 @@ body.camera-mode-on,
     position: relative;
     background: transparent !important;
     background-color: transparent !important;
-}
-
-/* Live Camera Viewfinder Ped Box */
-.camera-live-ped-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.cam-ped-avatar-frame {
-    width: 140px;
-    height: 180px;
-    border-radius: 24px;
-    border: 2px dashed rgba(255, 255, 255, 0.7);
-    box-shadow: 0 0 20px rgba(0, 122, 255, 0.4);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(4px);
-}
-
-.cam-ped-icon {
-    font-size: 52px;
-    color: #007aff;
-}
-
-.cam-ped-status-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: #ffffff;
-    background: rgba(0, 122, 255, 0.8);
-    padding: 3px 10px;
-    border-radius: 12px;
 }
 
 .camera-grid-line {
@@ -1193,7 +1124,7 @@ body.camera-mode-on,
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #007aff 0%, #0040a8 100%);
+    background: linear-gradient(135deg, #0a84ff 0%, #0040a8 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1245,7 +1176,7 @@ body.camera-mode-on,
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: #007aff;
+    background: #0a84ff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1264,7 +1195,7 @@ body.camera-mode-on,
 
 .yt-profile-meta p {
     font-size: 10px;
-    color: #ff9500;
+    color: #ff9f0a;
     margin-top: 2px;
 }
 
@@ -1739,7 +1670,7 @@ body.camera-mode-on,
 
 /* APP STORE STYLING */
 .appstore-banner {
-    background: linear-gradient(135deg, #007aff 0%, #0040a8 100%);
+    background: linear-gradient(135deg, #0a84ff 0%, #0040a8 100%);
     border-radius: 16px;
     padding: 14px;
     color: #ffffff;
@@ -1783,7 +1714,7 @@ body.camera-mode-on,
 
 .icon-yt { background: #ff0000; }
 .icon-spotify { background: #1db954; }
-.icon-appstore { background: linear-gradient(135deg, #007aff, #0051a8); }
+.icon-appstore { background: linear-gradient(135deg, #0a84ff, #0051a8); }
 
 .store-app-info h4 {
     font-size: 13px;
@@ -1797,11 +1728,11 @@ body.camera-mode-on,
 
 .btn-install-app {
     margin-left: auto;
-    background: rgba(0, 122, 255, 0.2);
-    border: 1px solid #007aff;
+    background: rgba(10, 132, 255, 0.2);
+    border: 1px solid #0a84ff;
     border-radius: 20px;
     padding: 6px 14px;
-    color: #007aff;
+    color: #0a84ff;
     font-size: 12px;
     font-weight: 700;
     cursor: pointer !important;
@@ -1809,9 +1740,9 @@ body.camera-mode-on,
 }
 
 .btn-install-app.installed {
-    background: rgba(52, 199, 89, 0.2);
-    border-color: #34c759;
-    color: #34c759;
+    background: rgba(48, 209, 88, 0.2);
+    border-color: #30d158;
+    color: #30d158;
 }
 
 /* REALISTIC OZONE OS LOCK SCREEN */
@@ -1832,11 +1763,11 @@ body.camera-mode-on,
     border-radius: 20px;
     font-size: 11px;
     font-weight: 600;
-    color: #34c759;
+    color: #30d158;
     display: flex;
     align-items: center;
     gap: 6px;
-    border: 1px solid rgba(52, 199, 89, 0.3);
+    border: 1px solid rgba(48, 209, 88, 0.3);
     transition: all 0.3s ease;
 }
 
@@ -1899,7 +1830,7 @@ body.camera-mode-on,
     font-size: 16px;
 }
 
-.sim-notif { background: #ff9500; color: #fff; }
+.sim-notif { background: #ff9f0a; color: #fff; }
 
 .notif-content h4 {
     font-size: 12px;
@@ -1968,7 +1899,7 @@ body.camera-mode-on,
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #007aff 0%, #0051a8 100%);
+    background: linear-gradient(135deg, #0a84ff 0%, #0051a8 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1990,7 +1921,7 @@ body.camera-mode-on,
 .ios-sub-badge {
     font-size: 9.5px;
     font-weight: 600;
-    color: #ff9500;
+    color: #ff9f0a;
 }
 
 .ios-arrow {
@@ -2041,8 +1972,8 @@ body.camera-mode-on,
     color: #ffffff;
 }
 
-.icon-danger { background: #ff3b30; }
-.ios-danger-text { color: #ff3b30; }
+.icon-danger { background: #ff453a; }
+.ios-danger-text { color: #ff453a; }
 
 .wallpaper-selector {
     display: flex;
@@ -2065,14 +1996,14 @@ body.camera-mode-on,
 }
 
 .wp-option.active-wp {
-    border-color: #007aff;
-    background: rgba(0, 122, 255, 0.16);
+    border-color: #0a84ff;
+    background: rgba(10, 132, 255, 0.16);
 }
 
 .ios-check-mark {
     margin-left: auto;
     font-size: 16px;
-    color: #007aff;
+    color: #0a84ff;
     display: none;
 }
 
@@ -2184,13 +2115,13 @@ body.camera-mode-on,
 }
 
 /* App Icon Gradients (iOS 16 Palette) */
-.icon-phone { background: linear-gradient(180deg, #34c759 0%, #249d43 100%); }
+.icon-phone { background: linear-gradient(180deg, #30d158 0%, #1b9c3f 100%); }
 .icon-messages { background: linear-gradient(180deg, #30d158 0%, #1b9c3f 100%); }
 .icon-camera { background: linear-gradient(180deg, #8e8e93 0%, #48484a 100%); }
 .icon-photos { background: linear-gradient(180deg, #ff2d55 0%, #ff375f 100%); }
-.icon-bank { background: linear-gradient(180deg, #007aff 0%, #0051a8 100%); }
-.icon-garage { background: linear-gradient(180deg, #ff3b30 0%, #c02d25 100%); }
-.icon-gps { background: linear-gradient(180deg, #ff9500 0%, #d67c00 100%); }
+.icon-bank { background: linear-gradient(180deg, #0a84ff 0%, #0051a8 100%); }
+.icon-garage { background: linear-gradient(180deg, #ff453a 0%, #c02d25 100%); }
+.icon-gps { background: linear-gradient(180deg, #ff9f0a 0%, #d67c00 100%); }
 .icon-settings { background: linear-gradient(180deg, #8e8e93 0%, #545458 100%); }
 
 /* iOS Glass Dock */
@@ -2262,7 +2193,7 @@ body.camera-mode-on,
     background: linear-gradient(135deg, #1c2b46 0%, #0c1524 100%);
     border-radius: 16px;
     padding: 16px;
-    border: 1px solid rgba(0, 122, 255, 0.3);
+    border: 1px solid rgba(10, 132, 255, 0.3);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     margin-bottom: 14px;
 }
@@ -2271,7 +2202,7 @@ body.camera-mode-on,
     font-size: 10.5px;
     font-weight: 800;
     letter-spacing: 2px;
-    color: #007aff;
+    color: #0a84ff;
 }
 
 .card-balance {
@@ -2320,7 +2251,7 @@ body.camera-mode-on,
 .btn-bank-send {
     width: 100%;
     height: 40px;
-    background: #007aff;
+    background: #0a84ff;
     border: none;
     border-radius: 10px;
     color: #ffffff;
@@ -2344,8 +2275,8 @@ body.camera-mode-on,
 .veh-icon {
     width: 38px;
     height: 38px;
-    background: rgba(255, 59, 48, 0.2);
-    color: #ff3b30;
+    background: rgba(255, 69, 58, 0.2);
+    color: #ff453a;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -2399,7 +2330,7 @@ body.camera-mode-on,
 
 .gps-btn-place i {
     font-size: 22px;
-    color: #ff9500;
+    color: #ff9f0a;
 }
 
 /* PHOTOS GALLERY */
@@ -2469,15 +2400,15 @@ body.camera-mode-on,
 
 /* SIM CARD DISPLAY */
 .my-sim-bar {
-    background: rgba(255, 149, 0, 0.16);
-    border: 1px solid rgba(255, 149, 0, 0.3);
+    background: rgba(255, 159, 10, 0.16);
+    border: 1px solid rgba(255, 159, 10, 0.3);
     border-radius: 12px;
     padding: 8px 12px;
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 11.5px;
-    color: #ff9500;
+    color: #ff9f0a;
     margin-bottom: 12px;
 }
 
@@ -2487,7 +2418,7 @@ body.camera-mode-on,
 
 .sim-activation-icon {
     font-size: 44px;
-    color: #ff9500;
+    color: #ff9f0a;
     margin-top: 14px;
 }
 
@@ -2533,7 +2464,7 @@ body.camera-mode-on,
 
 .caller-sim {
     font-size: 11.5px;
-    color: #ff9500;
+    color: #ff9f0a;
     margin-bottom: 6px;
 }
 
@@ -2546,7 +2477,7 @@ body.camera-mode-on,
 .call-timer {
     font-size: 19px;
     font-weight: 800;
-    color: #34c759;
+    color: #30d158;
     letter-spacing: 1px;
     margin-bottom: 24px;
 }
@@ -2579,8 +2510,8 @@ body.camera-mode-on,
     transform: scale(0.9);
 }
 
-.btn-call-accept { background: #34c759; }
-.btn-call-reject, .btn-call-hangup { background: #ff3b30; }
+.btn-call-accept { background: #30d158; }
+.btn-call-reject, .btn-call-hangup { background: #ff453a; }
 
 /* Dialer / Phone App Styling */
 .dialer-wrapper {
@@ -2620,7 +2551,7 @@ body.camera-mode-on,
     width: 54px;
     height: 54px;
     border-radius: 50%;
-    background: #34c759;
+    background: #30d158;
     border: none;
     color: #ffffff;
     font-size: 22px;

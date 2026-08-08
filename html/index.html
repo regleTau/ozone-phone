@@ -8,7 +8,7 @@
     <!-- Google Fonts & Apple SF Pro Display Fallbacks -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <!-- CSS -->
@@ -39,7 +39,7 @@
                 <div class="status-bar" id="top-status-bar">
                     <span id="phone-clock" class="status-time">13:19</span>
 
-                    <!-- DYNAMIC ISLAND NOTCH (iOS 16 PRO) -->
+                    <!-- DYNAMIC ISLAND NOTCH (iPhone 14 Pro) -->
                     <div class="dynamic-island" id="dynamic-island-bar" title="Dynamic Island">
                         <div class="island-left" id="island-left-content">
                             <div class="island-camera"></div>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
 
-                    <div class="status-icons" id="status-icons-btn" title="Centrul de Control">
+                    <div class="status-icons" id="status-icons-btn" title="Centru de Control">
                         <span id="net-type-label" class="net-type">5G</span>
                         <i id="wifi-icon-bar" class="bi bi-wifi"></i>
                         <i class="bi bi-battery-full battery-icon"></i>
@@ -130,7 +130,7 @@
                             </div>
                         </div>
 
-                        <!-- Brightness & Volume Sliders (Thick iOS Vertical Pills) -->
+                        <!-- Brightness & Volume Sliders -->
                         <div class="cc-sliders-row">
                             <div class="cc-slider-box">
                                 <i class="bi bi-sun-fill"></i>
@@ -224,102 +224,111 @@
                     </div>
 
                     <!-- ============================================================
-                         0B. AUTHENTIC APPLE iOS 16 SETUP WIZARD (HELLO SCREEN)
+                         0B. AUTHENTIC iOS 16 SETUP WIZARD (HUMAN CRAFTED DESIGN)
                          ============================================================ -->
                     <div id="setup-wizard" class="app-screen">
                         <div class="setup-container">
                             <!-- Step 1: Animated Multilingual Hello Screen -->
                             <div class="setup-step active-step" id="setup-step-1">
-                                <div class="ios-apple-logo"><i class="bi bi-apple"></i></div>
-                                <div class="ios-hello-anim-box">
-                                    <h1 class="ios-hello-text" id="hello-text-dynamic">Hello</h1>
-                                </div>
+                                <div class="setup-top-icon"><i class="bi bi-apple"></i></div>
+                                <h1 class="ios-hello-text" id="hello-text-dynamic">Hello</h1>
                                 <p class="setup-sub">Configurare iPhone 14 Pro</p>
-                                
-                                <div class="setup-quick-features">
-                                    <div class="setup-feat-pill">
-                                        <i class="bi bi-shield-check"></i>
+
+                                <div class="ios-grouped-list">
+                                    <div class="ios-row-item">
+                                        <i class="bi bi-shield-check ios-row-icon blue"></i>
                                         <span>Face ID & Securitate</span>
+                                        <span class="ios-row-val">Activat</span>
                                     </div>
-                                    <div class="setup-feat-pill">
-                                        <i class="bi bi-sim-fill"></i>
-                                        <span>Rețea Celulară 5G</span>
+                                    <div class="ios-row-item">
+                                        <i class="bi bi-sim-fill ios-row-icon orange"></i>
+                                        <span>Cartelă SIM 5G</span>
+                                        <span class="ios-row-val">Detectată</span>
                                     </div>
-                                    <div class="setup-feat-pill">
-                                        <i class="bi bi-palette-fill"></i>
-                                        <span>Ecran Super Retina XDR</span>
+                                    <div class="ios-row-item">
+                                        <i class="bi bi-cpu-fill ios-row-icon purple"></i>
+                                        <span>Sistem de Operare</span>
+                                        <span class="ios-row-val">OZONE OS</span>
                                     </div>
                                 </div>
 
-                                <button class="btn-setup-next" data-next="2">Configurare Rapidă <i class="bi bi-chevron-right"></i></button>
+                                <button class="btn-setup-next" data-next="2">Continuă</button>
                             </div>
 
-                            <!-- Step 2: SIM Card & Network Activation -->
+                            <!-- Step 2: Cellular / SIM Setup -->
                             <div class="setup-step" id="setup-step-2">
-                                <div class="sim-activation-icon"><i class="bi bi-sim-fill"></i></div>
-                                <h3>Rețea Celulară</h3>
-                                <p class="setup-sub">Cartela ta SIM a fost activată cu succes:</p>
+                                <div class="setup-top-icon"><i class="bi bi-sim"></i></div>
+                                <h2 class="setup-title">Rețea Celulară</h2>
+                                <p class="setup-sub">Cartela ta SIM este configurată și gata de utilizare.</p>
 
-                                <div class="sim-card-display">
-                                    <div class="sim-card-top">
-                                        <span class="sim-carrier">ORANGE 5G</span>
-                                        <i class="bi bi-reception-4 sim-signal"></i>
+                                <div class="ios-grouped-list">
+                                    <div class="ios-row-item">
+                                        <span>Operator</span>
+                                        <span class="ios-row-val">Orange 5G</span>
                                     </div>
-                                    <h2 id="setup-sim-num">0722-149-802</h2>
-                                    <div class="sim-card-bottom">
-                                        <span>ID Jucător: <strong id="setup-user-id">1</strong></span>
-                                        <span class="sim-active-badge"><i class="bi bi-check-circle-fill"></i> Activ</span>
+                                    <div class="ios-row-item">
+                                        <span>Număr Telefon</span>
+                                        <span class="ios-row-val" id="setup-sim-num">0722-701-492</span>
+                                    </div>
+                                    <div class="ios-row-item">
+                                        <span>ID Jucător</span>
+                                        <span class="ios-row-val" id="setup-user-id">#1</span>
+                                    </div>
+                                    <div class="ios-row-item">
+                                        <span>Stare Rețea</span>
+                                        <span class="ios-row-val green"><i class="bi bi-check-circle-fill"></i> Conectat</span>
                                     </div>
                                 </div>
 
-                                <button class="btn-setup-next" data-next="3">Continuă <i class="bi bi-chevron-right"></i></button>
+                                <button class="btn-setup-next" data-next="3">Continuă</button>
                             </div>
 
-                            <!-- Step 3: Appearance & Wallpaper Theme -->
+                            <!-- Step 3: Appearance / Wallpaper Theme -->
                             <div class="setup-step" id="setup-step-3">
-                                <div class="setup-icon-top"><i class="bi bi-palette-fill"></i></div>
-                                <h3>Aspect Ecran</h3>
-                                <p class="setup-sub">Alege aspectul tău favorit iOS 16:</p>
+                                <div class="setup-top-icon"><i class="bi bi-palette"></i></div>
+                                <h2 class="setup-title">Aspect Ecran</h2>
+                                <p class="setup-sub">Alege stilul vizual pentru ecranul principal.</p>
 
-                                <div class="wallpaper-selector">
-                                    <div class="wp-option active-wp" data-wp="purple">
-                                        <div class="wp-preview wp-preview-purple"></div>
+                                <div class="ios-grouped-list wp-select-group">
+                                    <div class="ios-row-item wp-option active-wp" data-wp="purple">
+                                        <div class="wp-mini-preview wp-purple"></div>
                                         <span>Deep Purple (iOS 16)</span>
                                         <i class="bi bi-check2 ios-check-mark"></i>
                                     </div>
-                                    <div class="wp-option" data-wp="cyber">
-                                        <div class="wp-preview wp-preview-cyber"></div>
+                                    <div class="ios-row-item wp-option" data-wp="cyber">
+                                        <div class="wp-mini-preview wp-cyber"></div>
                                         <span>Space Black</span>
                                         <i class="bi bi-check2 ios-check-mark"></i>
                                     </div>
-                                    <div class="wp-option" data-wp="sunset">
-                                        <div class="wp-preview wp-preview-sunset"></div>
+                                    <div class="ios-row-item wp-option" data-wp="sunset">
+                                        <div class="wp-mini-preview wp-sunset"></div>
                                         <span>Solar Sunset</span>
                                         <i class="bi bi-check2 ios-check-mark"></i>
                                     </div>
                                 </div>
 
-                                <button class="btn-setup-next" data-next="4">Continuă <i class="bi bi-chevron-right"></i></button>
+                                <button class="btn-setup-next" data-next="4">Continuă</button>
                             </div>
 
-                            <!-- Step 4: Face ID Security & Welcome Finish -->
+                            <!-- Step 4: Finish -->
                             <div class="setup-step" id="setup-step-4">
-                                <div class="face-id-big-icon"><i class="bi bi-shield-lock-fill"></i></div>
-                                <h3>Face ID Configurat</h3>
-                                <p class="setup-sub">Telefonul tău este securizat și pregătit pentru utilizare.</p>
+                                <div class="setup-top-icon green-icon"><i class="bi bi-check-circle-fill"></i></div>
+                                <h2 class="setup-title">Configurare Finalizată</h2>
+                                <p class="setup-sub">Noul tău iPhone 14 Pro este gata de utilizare.</p>
 
-                                <div class="setup-done-card">
-                                    <i class="bi bi-check-circle-fill done-check"></i>
-                                    <span>Configurare Finalizată</span>
+                                <div class="ios-grouped-list">
+                                    <div class="ios-row-item text-center-row">
+                                        <span class="green">Toate serviciile funcționează normal</span>
+                                    </div>
                                 </div>
 
-                                <button id="btn-finish-setup" class="btn-setup-finish">Începe să folosești iPhone-ul <i class="bi bi-arrow-right"></i></button>
+                                <button id="btn-finish-setup" class="btn-setup-finish">Începe utilizarea</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- ============================================================
-                         1. HOME SCREEN (iOS 16 AUTHENTIC SQUIRCLE GRID & DOCK)
+                         1. HOME SCREEN
                          ============================================================ -->
                     <div id="home-screen" class="app-screen active-screen">
                         <!-- iOS 16 Weather Widget -->
@@ -332,7 +341,7 @@
                             </div>
                         </div>
 
-                        <!-- Apps Grid (4x4 Squircle Proportions) -->
+                        <!-- Apps Grid -->
                         <div class="apps-grid" id="main-apps-grid">
                             <div class="app-item" data-app="phone">
                                 <div class="app-icon icon-phone"><i class="bi bi-telephone-fill"></i></div>
@@ -397,7 +406,7 @@
                     </div>
 
                     <!-- ============================================================
-                         2. AUTHENTIC YOUTUBE MOBILE APP
+                         2. YOUTUBE APP SCREEN
                          ============================================================ -->
                     <div id="app-youtube" class="app-screen">
                         <div class="yt-nav-bar">
@@ -479,7 +488,7 @@
                     </div>
 
                     <!-- ============================================================
-                         2B. AUTHENTIC SPOTIFY MOBILE MUSIC APP
+                         2B. SPOTIFY APP SCREEN
                          ============================================================ -->
                     <div id="app-spotify" class="app-screen">
                         <div class="spotify-header">
@@ -540,7 +549,7 @@
                     </div>
 
                     <!-- ============================================================
-                         3. APP STORE APP SCREEN (iOS 16)
+                         3. APP STORE APP SCREEN
                          ============================================================ -->
                     <div id="app-appstore" class="app-screen">
                         <div class="app-header">
@@ -580,7 +589,7 @@
                     </div>
 
                     <!-- ============================================================
-                         4. CAMERA APP SCREEN (TRANSPARENT VIEWFINDER)
+                         4. CAMERA APP SCREEN
                          ============================================================ -->
                     <div id="app-camera" class="app-screen" style="background: none !important; background-color: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;">
                         <div class="camera-viewport" style="background: none !important; background-color: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;">
@@ -628,7 +637,7 @@
                     </div>
 
                     <!-- ============================================================
-                         6. BANK APP SCREEN (APPLE WALLET STYLING)
+                         6. BANK APP SCREEN
                          ============================================================ -->
                     <div id="app-bank" class="app-screen">
                         <div class="app-header">
@@ -671,7 +680,7 @@
                     </div>
 
                     <!-- ============================================================
-                         8. TELEFON / CALLS APP SCREEN (iOS 16 DIALER)
+                         8. TELEFON / CALLS APP SCREEN
                          ============================================================ -->
                     <div id="app-phone" class="app-screen">
                         <div class="app-header">
@@ -706,7 +715,7 @@
                     </div>
 
                     <!-- ============================================================
-                         9. MESSAGES APP SCREEN (iOS 16 MESSAGES)
+                         9. MESSAGES APP SCREEN
                          ============================================================ -->
                     <div id="app-messages" class="app-screen">
                         <div class="app-header">
@@ -728,7 +737,7 @@
                     </div>
 
                     <!-- ============================================================
-                         10. GPS MAP APP SCREEN (APPLE MAPS STYLING)
+                         10. GPS MAP APP SCREEN
                          ============================================================ -->
                     <div id="app-gps" class="app-screen">
                         <div class="app-header">
