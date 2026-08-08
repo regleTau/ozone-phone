@@ -1,0 +1,2438 @@
+/* ============================================================
+   OZONE PHONE 14 PRO - AUTHENTIC YOUTUBE, SPOTIFY & CAMERA TRANSPARENCY
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: 'SF Pro Display', -apple-system, system-ui, sans-serif;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+/* HIDE ALL UGLY WHITE BROWSER SCROLLBARS STRICTLY */
+::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+    background: transparent !important;
+    display: none !important;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent !important;
+    background-color: transparent !important;
+    pointer-events: none;
+}
+
+/* Brightness Filter Overlay Layer */
+.brightness-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 9999;
+    background: #000000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease;
+}
+
+/* Phone Wrapper Container */
+.iphone-container {
+    position: fixed;
+    bottom: -720px;
+    right: 40px;
+    z-index: 999999;
+    transition: bottom 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    background: transparent !important;
+}
+
+.iphone-container.open {
+    bottom: 25px;
+    pointer-events: auto !important;
+}
+
+/* Physical Metallic OZONE Phone Chassis Frame */
+.iphone-frame {
+    position: relative;
+    width: 320px;
+    height: 650px;
+    background: #18181c;
+    border-radius: 48px;
+    border: 8px solid #26262a;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    overflow: hidden !important;
+    pointer-events: auto !important;
+    transition: background 0.2s ease;
+}
+
+/* Side Buttons */
+.side-btn {
+    position: absolute;
+    background: #26262a;
+    border-radius: 4px;
+}
+
+.power-btn {
+    right: -12px;
+    top: 140px;
+    width: 4px;
+    height: 70px;
+}
+
+.volume-up {
+    left: -12px;
+    top: 120px;
+    width: 4px;
+    height: 45px;
+}
+
+.volume-down {
+    left: -12px;
+    top: 175px;
+    width: 4px;
+    height: 45px;
+}
+
+/* Screen Viewport */
+.iphone-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    overflow: hidden !important;
+    position: relative;
+    background: transparent !important;
+    pointer-events: auto !important;
+}
+
+/* Dynamic Wallpapers */
+.phone-wallpaper {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: background 0.4s ease, opacity 0.2s ease;
+}
+
+.phone-wallpaper.wp-purple {
+    background: 
+        radial-gradient(circle at 75% 20%, rgba(138, 43, 226, 0.6) 0%, transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.45) 0%, transparent 60%),
+        linear-gradient(160deg, #3d0e5e 0%, #18052e 50%, #090214 100%);
+}
+
+.phone-wallpaper.wp-cyber {
+    background: 
+        radial-gradient(circle at 50% 30%, rgba(0, 198, 255, 0.5) 0%, transparent 60%),
+        linear-gradient(160deg, #001122 0%, #002b47 50%, #000814 100%);
+}
+
+.phone-wallpaper.wp-sunset {
+    background: 
+        radial-gradient(circle at 80% 20%, rgba(255, 149, 0, 0.6) 0%, transparent 55%),
+        linear-gradient(160deg, #8e2de2 0%, #4a00e0 50%, #15003b 100%);
+}
+
+/* Status Bar Top */
+.status-bar {
+    position: relative;
+    z-index: 50;
+    height: 44px;
+    padding: 10px 20px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-time {
+    letter-spacing: -0.2px;
+}
+
+.status-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    cursor: pointer !important;
+}
+
+.battery-icon {
+    font-size: 13px;
+}
+
+/* Dynamic Island Notch */
+.dynamic-island {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 25px;
+    background: #000000;
+    border-radius: 20px;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer !important;
+}
+
+.dynamic-island.island-expanded {
+    width: 175px;
+    height: 30px;
+    border-radius: 24px;
+}
+
+/* Dynamic Island Music Active State */
+.dynamic-island.island-music-active {
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    padding: 0 10px;
+    background: #000000;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.8), 0 0 12px rgba(29, 185, 84, 0.3);
+}
+
+.dynamic-island.island-music-active .island-alert {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Sound EQ Animation Bars */
+.island-eq-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 12px;
+}
+
+.island-eq-bars span {
+    width: 2.5px;
+    background: #1db954;
+    border-radius: 2px;
+    animation: eqBounce 0.8s ease-in-out infinite alternate;
+}
+
+.island-eq-bars span:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+.island-eq-bars span:nth-child(2) { height: 100%; animation-delay: 0.3s; }
+.island-eq-bars span:nth-child(3) { height: 65%; animation-delay: 0.2s; }
+
+@keyframes eqBounce {
+    0% { height: 30%; }
+    100% { height: 100%; }
+}
+
+/* Dynamic Island Expanded Mini Player Overlay */
+.island-mini-player-overlay {
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    width: 270px;
+    background: rgba(18, 18, 24, 0.96);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 12px;
+    color: #ffffff;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto !important;
+}
+
+.island-mini-player-overlay.island-expanded-player {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateX(-50%) scale(1) !important;
+}
+
+.island-mini-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.island-mini-art {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #222;
+    flex-shrink: 0;
+}
+
+.island-mini-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.island-mini-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.island-mini-info h4 {
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.island-mini-info p {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.island-mini-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.island-ctrl-btn {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer !important;
+}
+
+.island-play-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #1db954;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer !important;
+}
+
+.island-camera {
+    width: 9px;
+    height: 9px;
+    background: #0d0d18;
+    border-radius: 50%;
+    border: 1px solid #1a1a24;
+}
+
+.island-sensor {
+    width: 7px;
+    height: 7px;
+    background: #0d0d18;
+    border-radius: 50%;
+}
+
+.island-alert {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    color: #ffffff;
+    font-size: 10.5px;
+    font-weight: 700;
+}
+
+/* Screen Body Container */
+.screen-body {
+    position: relative;
+    z-index: 10;
+    height: calc(100% - 44px);
+    width: 100%;
+    overflow: hidden;
+    pointer-events: auto !important;
+    background: transparent !important;
+}
+
+/* iOS CONTROL CENTER OVERLAY */
+.control-center-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 800;
+    background: rgba(12, 12, 18, 0.92);
+    backdrop-filter: blur(28px);
+    display: none;
+    flex-direction: column;
+    padding: 16px;
+    color: #ffffff;
+    animation: slideDownCC 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.control-center-overlay.active-cc-screen {
+    display: flex !important;
+}
+
+@keyframes slideDownCC {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.cc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.cc-close-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    color: #ffffff;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer !important;
+}
+
+.cc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.cc-card {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.cc-conn-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.cc-icon-btn {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 16px;
+    cursor: pointer !important;
+    transition: all 0.2s ease;
+}
+
+.cc-icon-btn span {
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.cc-icon-btn.active-cc {
+    background: #007aff;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+}
+
+.cc-icon-btn.airplane-active {
+    background: #ff9500;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255, 149, 0, 0.4);
+}
+
+.cc-media-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.media-info h4 {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.media-info p {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.media-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.media-play-btn {
+    font-size: 24px;
+    color: #007aff;
+    cursor: pointer !important;
+}
+
+/* Brightness & Volume Sliders */
+.cc-sliders-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.cc-slider-box {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 18px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cc-slider-box i {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.cc-slider-box input[type="range"] {
+    width: 100%;
+    accent-color: #007aff;
+    cursor: pointer !important;
+}
+
+/* Quick Shortcuts */
+.cc-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.cc-qbtn {
+    height: 48px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer !important;
+}
+
+.cc-qbtn.active-qbtn {
+    background: #ffca28;
+    color: #000000;
+}
+
+/* APP SCREENS SWITCHING */
+.app-screen {
+    position: absolute;
+    inset: 0;
+    display: none !important;
+    flex-direction: column;
+    z-index: 5;
+    background: rgba(10, 10, 18, 0.82);
+    backdrop-filter: blur(35px) saturate(180%);
+    -webkit-backdrop-filter: blur(35px) saturate(180%);
+    overflow: hidden;
+    pointer-events: auto !important;
+}
+
+.app-screen.active-screen {
+    display: flex !important;
+    animation: fadeInApp 0.25s ease forwards;
+}
+
+#home-screen.active-screen {
+    background: transparent !important;
+    backdrop-filter: none !important;
+}
+
+/* ============================================================
+   ULTRA-STRICT 100% CAMERA VIEWFINDER TRANSPARENCY OVERRIDES
+   ============================================================ */
+html.camera-mode-on,
+body.camera-mode-on,
+.is-camera-open,
+.is-camera-open .iphone-frame,
+.is-camera-open .iphone-screen,
+.is-camera-open .screen-body,
+.is-camera-open #app-camera,
+.is-camera-open #app-camera.app-screen,
+.is-camera-open #app-camera.active-screen,
+.is-camera-open .camera-viewport {
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+.is-camera-open #phone-wallpaper-bg,
+.is-camera-open #brightness-filter {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.is-camera-open .iphone-frame {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 8px solid #26262a !important;
+    box-shadow: 0 0 0 2px #18181c, 0 12px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+#app-camera .camera-viewport {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Live Camera Viewfinder Ped Box */
+.camera-live-ped-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.cam-ped-avatar-frame {
+    width: 140px;
+    height: 180px;
+    border-radius: 24px;
+    border: 2px dashed rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 20px rgba(0, 122, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+}
+
+.cam-ped-icon {
+    font-size: 52px;
+    color: #007aff;
+}
+
+.cam-ped-status-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffffff;
+    background: rgba(0, 122, 255, 0.8);
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.camera-grid-line {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.35);
+    pointer-events: none;
+}
+
+.camera-grid-line.h-line {
+    top: 33%;
+    left: 0;
+    right: 0;
+    height: 1px;
+}
+
+.camera-grid-line.v-line {
+    left: 33%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+}
+
+.camera-header-controls {
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 17px;
+    color: #ffffff;
+    z-index: 10;
+    background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 100%);
+}
+
+.cam-zoom {
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 3px 9px;
+    border-radius: 20px;
+}
+
+.camera-shutter-bar {
+    margin-top: auto;
+    height: 90px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 16px;
+    z-index: 10;
+}
+
+.cam-last-photo-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ffffff;
+    overflow: hidden !important;
+    cursor: pointer !important;
+}
+
+.cam-last-photo-thumb img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.shutter-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3.5px solid #ffffff;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer !important;
+}
+
+.shutter-inner {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #ffffff;
+    transition: transform 0.15s ease;
+}
+
+.shutter-button:active .shutter-inner {
+    transform: scale(0.85);
+}
+
+.cam-switch-flip {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer !important;
+    transition: transform 0.3s ease;
+}
+
+.cam-switch-flip:active {
+    transform: rotate(180deg);
+}
+
+/* ------------------------------------------------------------
+   AUTHENTIC YOUTUBE MOBILE APP STYLING
+   ------------------------------------------------------------ */
+#app-youtube {
+    background: #0f0f0f !important;
+}
+
+.yt-nav-bar {
+    height: 44px;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0f0f0f;
+    border-bottom: 1px solid #1f1f1f;
+    z-index: 10;
+}
+
+.yt-back-btn {
+    background: none;
+    border: none;
+    color: #ff0000 !important;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer !important;
+    padding: 4px;
+}
+
+.yt-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.yt-brand-logo i {
+    color: #ff0000;
+    font-size: 19px;
+}
+
+.yt-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+}
+
+.yt-nav-icon {
+    font-size: 15px;
+    cursor: pointer !important;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+/* ELEGANT YOUTUBE SEARCH PILL CONTAINER */
+.yt-search-container {
+    padding: 6px 10px;
+    background: #0f0f0f;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.yt-search-pill-box {
+    height: 36px;
+    background: #222222;
+    border: 1px solid #333333;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 8px;
+    width: 100%;
+}
+
+.yt-search-pill-box:focus-within {
+    border-color: #ff0000;
+    background: #181818;
+}
+
+.yt-search-lens {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.yt-search-pill-box input {
+    flex: 1;
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 500;
+}
+
+.yt-search-pill-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.yt-clear-btn {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer !important;
+}
+
+.yt-clear-btn:hover {
+    color: #ffffff;
+}
+
+/* User Account Avatar Circle */
+.yt-account-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #007aff 0%, #0040a8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #ffffff;
+    cursor: pointer !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* YouTube User Account Drawer Modal */
+.yt-account-modal {
+    position: absolute;
+    inset: 0;
+    z-index: 2500;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    display: none !important;
+    align-items: flex-end;
+}
+
+.yt-account-modal.active-account-drawer {
+    display: flex !important;
+    animation: slideUpDrawer 0.3s ease forwards;
+}
+
+@keyframes slideUpDrawer {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.yt-drawer-content {
+    width: 100%;
+    background: #181818;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 16px;
+    color: #ffffff;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.yt-drawer-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.yt-profile-big-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #007aff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.yt-profile-meta h3 {
+    font-size: 13.5px;
+    font-weight: 700;
+}
+
+.yt-profile-meta span {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.yt-profile-meta p {
+    font-size: 10px;
+    color: #ff9500;
+    margin-top: 2px;
+}
+
+.yt-drawer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.yt-drawer-item {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer !important;
+}
+
+/* YouTube Categories Pills Bar */
+.yt-pills-bar {
+    display: flex;
+    gap: 6px;
+    padding: 8px 10px;
+    overflow-x: auto;
+    background: #0f0f0f;
+    border-bottom: 1px solid #222222;
+}
+
+.yt-pill {
+    white-space: nowrap;
+    padding: 5px 11px;
+    background: #272727;
+    border-radius: 14px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer !important;
+    transition: all 0.2s ease;
+}
+
+.yt-pill.active-pill {
+    background: #ffffff;
+    color: #000000;
+}
+
+.yt-feed-content {
+    background: #0f0f0f;
+    padding: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.yt-cinema-box {
+    margin-bottom: 14px;
+}
+
+.yt-player-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+}
+
+.yt-player-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.yt-playing-meta {
+    margin-top: 10px;
+}
+
+.yt-playing-meta h3 {
+    font-size: 12.5px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #ffffff;
+}
+
+.yt-channel-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.yt-ch-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ff0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.yt-ch-info h4 {
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.yt-ch-info span {
+    font-size: 9px;
+    color: rgba(255,255,255,0.5);
+}
+
+.btn-yt-subscribe {
+    margin-left: auto;
+    background: #ffffff;
+    border: none;
+    border-radius: 16px;
+    padding: 4px 10px;
+    color: #000000;
+    font-size: 10.5px;
+    font-weight: 700;
+    cursor: pointer !important;
+}
+
+/* YouTube Feed Video Cards */
+.yt-feed-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.yt-feed-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer !important;
+    background: #161616;
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform 0.15s ease;
+}
+
+.yt-feed-card:hover {
+    transform: scale(1.01);
+}
+
+.yt-card-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #181818;
+}
+
+.yt-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.yt-duration-tag {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    font-size: 8.5px;
+    font-weight: 700;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.yt-card-details {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.yt-user-avatar-mini {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #272727;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.yt-card-text h4 {
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #ffffff;
+}
+
+.yt-card-text p {
+    font-size: 9.5px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+}
+
+/* ------------------------------------------------------------
+   AUTHENTIC SPOTIFY MOBILE MUSIC PLAYER STYLING (#121212 Dark Green)
+   ------------------------------------------------------------ */
+#app-spotify {
+    background: #121212 !important;
+}
+
+.spotify-header {
+    height: 46px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #121212;
+    border-bottom: 1px solid #222222;
+}
+
+.spotify-back-btn {
+    color: #1db954 !important;
+    font-weight: 700;
+}
+
+.spotify-brand {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.spotify-brand i {
+    color: #1db954;
+    font-size: 22px;
+}
+
+.spotify-content {
+    background: #121212;
+    padding: 12px;
+    overflow-y: auto;
+}
+
+.spotify-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #242424;
+    border-radius: 20px;
+    padding: 0 12px;
+    height: 36px;
+    margin-bottom: 14px;
+}
+
+.spotify-search-bar i {
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+}
+
+.spotify-search-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 11.5px;
+}
+
+.spotify-search-bar button {
+    background: #1db954;
+    border: none;
+    border-radius: 14px;
+    padding: 4px 12px;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer !important;
+}
+
+/* Spotify Now Playing Container */
+.spotify-now-playing-container {
+    background: linear-gradient(180deg, #1db954 0%, #121212 90%);
+    border-radius: 18px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+    box-shadow: 0 10px 25px rgba(29, 185, 84, 0.25);
+    border: 1px solid rgba(29, 185, 84, 0.3);
+}
+
+.spotify-album-art-box {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    margin-bottom: 12px;
+    background: #181818;
+}
+
+.spotify-album-art-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.spot-vinyl-glow {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    color: #1db954;
+    font-size: 20px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.8));
+}
+
+.spot-spin {
+    animation: spinVinyl 3.5s linear infinite;
+}
+
+@keyframes spinVinyl {
+    100% { transform: rotate(360deg); }
+}
+
+.spotify-track-meta {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.spot-title-group h3 {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.spot-title-group p {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 1px;
+}
+
+.spot-heart-icon {
+    font-size: 18px;
+    color: #1db954;
+    cursor: pointer !important;
+}
+
+.spotify-progress-wrapper {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.spotify-time-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9.5px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 4px;
+}
+
+.spotify-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.spot-progress-fill {
+    height: 100%;
+    background: #1db954;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.spotify-action-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    color: #ffffff;
+}
+
+.spot-ctrl-sub {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer !important;
+}
+
+.spot-ctrl-btn {
+    font-size: 22px;
+    cursor: pointer !important;
+}
+
+.spot-main-play-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #1db954;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer !important;
+    box-shadow: 0 4px 14px rgba(29, 185, 84, 0.4);
+    transition: transform 0.15s ease;
+}
+
+.spot-main-play-btn:active {
+    transform: scale(0.92);
+}
+
+.spotify-section-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.spotify-track-item {
+    background: #181818;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    cursor: pointer !important;
+    transition: background 0.2s ease;
+}
+
+.spotify-track-item:hover {
+    background: #282828;
+}
+
+.spot-item-cover {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #272727;
+}
+
+.spot-item-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.spot-item-meta h4 {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.spot-item-meta p {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.spot-btn-play-item {
+    margin-left: auto;
+    color: #1db954;
+    font-size: 22px;
+}
+
+/* APP STORE STYLING */
+.appstore-banner {
+    background: linear-gradient(135deg, #007aff 0%, #0040a8 100%);
+    border-radius: 16px;
+    padding: 14px;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.appstore-banner span {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.7);
+}
+
+.appstore-banner h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 2px;
+}
+
+.appstore-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.store-app-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #ffffff;
+}
+
+.icon-yt { background: #ff0000; }
+.icon-spotify { background: #1db954; }
+.icon-appstore { background: linear-gradient(135deg, #007aff, #0051a8); }
+
+.store-app-info h4 {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.store-app-info p {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.55);
+}
+
+.btn-install-app {
+    margin-left: auto;
+    background: rgba(0, 122, 255, 0.2);
+    border: 1px solid #007aff;
+    border-radius: 20px;
+    padding: 6px 14px;
+    color: #007aff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer !important;
+    transition: all 0.2s ease;
+}
+
+.btn-install-app.installed {
+    background: rgba(52, 199, 89, 0.2);
+    border-color: #34c759;
+    color: #34c759;
+}
+
+/* REALISTIC OZONE OS LOCK SCREEN */
+#lock-screen {
+    padding: 10px 20px 20px 20px;
+    color: #ffffff;
+}
+
+.lock-header {
+    margin-top: 4px;
+    display: flex;
+    justify-content: center;
+}
+
+.face-id-pill {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #34c759;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(52, 199, 89, 0.3);
+    transition: all 0.3s ease;
+}
+
+.spin-icon {
+    display: inline-block;
+    animation: spinFace 0.8s linear infinite;
+}
+
+@keyframes spinFace {
+    100% { transform: rotate(360deg); }
+}
+
+.lock-clock-wrapper {
+    text-align: center;
+    margin-top: 14px;
+}
+
+.lock-date {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.lock-time {
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-top: 2px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.lock-notifications {
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lock-notif-card {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.notif-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.sim-notif { background: #ff9500; color: #fff; }
+
+.notif-content h4 {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.notif-content p {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 1px;
+}
+
+.notif-time {
+    margin-left: auto;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.lock-bottom-shortcuts {
+    width: 100%;
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lock-btn-shortcut {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer !important;
+}
+
+.lock-unlock-prompt {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    animation: pulsePrompt 1.8s infinite;
+    cursor: pointer !important;
+}
+
+@keyframes pulsePrompt {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* SETUP WIZARD SCREEN */
+.setup-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 20px;
+    color: #ffffff;
+    text-align: center;
+    background: #090312;
+}
+
+.setup-step {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.setup-step.active-step {
+    display: flex;
+}
+
+.ios-hello-title {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.setup-sub {
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+.brand-logo-icon {
+    font-size: 56px;
+    color: #007aff;
+    margin: 24px 0;
+}
+
+.btn-setup-next, .btn-setup-finish {
+    width: 100%;
+    height: 46px;
+    border-radius: 14px;
+    background: #007aff;
+    border: none;
+    color: #ffffff;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: auto;
+    box-shadow: 0 8px 20px rgba(0, 122, 255, 0.4);
+}
+
+.btn-setup-finish {
+    background: #34c759;
+    box-shadow: 0 8px 20px rgba(52, 199, 89, 0.4);
+}
+
+/* SETTINGS & LISTS */
+.ios-profile-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.ios-profile-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #007aff 0%, #0051a8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #ffffff;
+}
+
+.ios-profile-info h3 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.ios-profile-info p {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 1px;
+}
+
+.ios-sub-badge {
+    font-size: 9.5px;
+    font-weight: 600;
+    color: #ff9500;
+}
+
+.ios-arrow {
+    margin-left: auto;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.ios-settings-group {
+    margin-bottom: 18px;
+}
+
+.ios-group-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 8px;
+    padding-left: 6px;
+}
+
+.ios-list-item {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer !important;
+    transition: background 0.2s ease;
+}
+
+.ios-list-item:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.ios-item-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.icon-danger { background: #ff3b30; }
+.ios-danger-text { color: #ff3b30; }
+
+.wallpaper-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.wp-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    cursor: pointer !important;
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.wp-option.active-wp {
+    border-color: #007aff;
+    background: rgba(0, 122, 255, 0.16);
+}
+
+.ios-check-mark {
+    margin-left: auto;
+    font-size: 16px;
+    color: #007aff;
+    display: none;
+}
+
+.wp-option.active-wp .ios-check-mark {
+    display: block;
+}
+
+.wp-preview {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+}
+
+.wp-preview-purple { background: linear-gradient(135deg, #3d0e5e, #18052e); }
+.wp-preview-cyber { background: linear-gradient(135deg, #001122, #002b47); }
+.wp-preview-sunset { background: linear-gradient(135deg, #ff9500, #4a00e0); }
+
+/* iOS Weather Widget */
+.ios-widget {
+    margin: 10px 16px 20px 16px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.widget-date {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.widget-weather {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.weather-icon {
+    font-size: 22px;
+    color: #ffca28;
+}
+
+.widget-weather .temp {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.widget-weather .city {
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-left: auto;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Apps Grid */
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 10px;
+    padding: 0 14px;
+    pointer-events: auto !important;
+}
+
+.app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+.app-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease;
+    pointer-events: auto !important;
+}
+
+.app-item:hover .app-icon {
+    transform: scale(1.06);
+}
+
+.app-item:active .app-icon {
+    transform: scale(0.92);
+}
+
+.app-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* App Icon Gradients */
+.icon-phone { background: linear-gradient(135deg, #34c759, #249d43); }
+.icon-messages { background: linear-gradient(135deg, #30d158, #1b9c3f); }
+.icon-camera { background: linear-gradient(135deg, #8e8e93, #48484a); }
+.icon-photos { background: linear-gradient(135deg, #ff2d55, #ff375f); }
+.icon-bank { background: linear-gradient(135deg, #007aff, #0051a8); }
+.icon-garage { background: linear-gradient(135deg, #ff3b30, #c02d25); }
+.icon-gps { background: linear-gradient(135deg, #ff9500, #d67c00); }
+.icon-settings { background: linear-gradient(135deg, #8e8e93, #545458); }
+
+/* iOS Glass Dock */
+.ios-dock {
+    position: absolute;
+    bottom: 22px;
+    left: 12px;
+    right: 12px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(25px);
+    border-radius: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    pointer-events: auto !important;
+}
+
+/* App Screens Inner Layout */
+.app-header {
+    height: 48px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    pointer-events: auto !important;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #007aff;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer !important;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    pointer-events: auto !important;
+}
+
+.app-header h2 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-right: auto;
+    margin-left: 12px;
+}
+
+.app-content {
+    padding: 14px;
+    flex: 1;
+    overflow-y: auto;
+    color: #ffffff;
+    pointer-events: auto !important;
+}
+
+/* Bank App Styling */
+.bank-card-widget {
+    background: linear-gradient(135deg, #1c2b46 0%, #0c1524 100%);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid rgba(0, 122, 255, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    margin-bottom: 14px;
+}
+
+.card-brand {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #007aff;
+}
+
+.card-balance {
+    margin: 12px 0;
+}
+
+.bal-title {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.card-balance h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 2px;
+}
+
+.card-footer-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.bank-form h3 {
+    font-size: 13.5px;
+    margin-bottom: 8px;
+}
+
+.bank-form input {
+    width: 100%;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 0 12px;
+    color: #ffffff;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+    outline: none;
+    pointer-events: auto !important;
+}
+
+.btn-bank-send {
+    width: 100%;
+    height: 40px;
+    background: #007aff;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 13.5px;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+/* Garage App Styling */
+.vehicle-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.veh-icon {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 59, 48, 0.2);
+    color: #ff3b30;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.veh-info h4 {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.veh-info span {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.btn-gps-veh {
+    margin-left: auto;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 10.5px;
+    padding: 5px 9px;
+    font-weight: 600;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+/* GPS Places Grid */
+.gps-places-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.gps-btn-place {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 14px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer !important;
+}
+
+.gps-btn-place i {
+    font-size: 22px;
+    color: #ff9500;
+}
+
+/* PHOTOS GALLERY */
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+}
+
+.photo-thumb {
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.photo-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Photo Modal Lightbox */
+.photo-modal {
+    position: absolute;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-modal.active-modal {
+    display: flex;
+}
+
+.photo-modal img {
+    max-width: 92%;
+    max-height: 80%;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.close-photo-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #ffffff;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer !important;
+}
+
+/* SIM CARD DISPLAY */
+.sim-card-display {
+    background: linear-gradient(135deg, #ff9500 0%, #d67c00 100%);
+    border-radius: 16px;
+    padding: 14px;
+    color: #ffffff;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(255, 149, 0, 0.3);
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.sim-carrier {
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.sim-card-display h2, .sim-card-display h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 6px 0;
+    letter-spacing: 1px;
+}
+
+.sim-id {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.my-sim-bar {
+    background: rgba(255, 149, 0, 0.16);
+    border: 1px solid rgba(255, 149, 0, 0.3);
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    color: #ff9500;
+    margin-bottom: 12px;
+}
+
+.my-sim-bar strong {
+    color: #ffffff;
+}
+
+.sim-activation-icon {
+    font-size: 48px;
+    color: #ff9500;
+    margin-bottom: 10px;
+}
+
+/* CALL OVERLAY */
+.call-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 900;
+    background: rgba(10, 10, 16, 0.96);
+    backdrop-filter: blur(28px);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 18px;
+    color: #ffffff;
+}
+
+.call-overlay.active-call-screen {
+    display: flex;
+    animation: fadeInApp 0.3s ease forwards;
+}
+
+.caller-avatar {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #ffffff;
+    margin-bottom: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.call-overlay h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 2px;
+}
+
+.caller-sim {
+    font-size: 11.5px;
+    color: #ff9500;
+    margin-bottom: 6px;
+}
+
+.call-status {
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+.call-timer {
+    font-size: 19px;
+    font-weight: 800;
+    color: #34c759;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+.call-actions-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    margin-top: auto;
+    width: 100%;
+}
+
+.btn-call-ctrl {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    color: #ffffff;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.btn-call-ctrl:active {
+    transform: scale(0.9);
+}
+
+.btn-call-accept { background: #34c759; }
+.btn-call-reject, .btn-call-hangup { background: #ff3b30; }
+
+/* Dialer / Phone App Styling */
+.dialer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialer-display {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 8px 0 16px 0;
+    letter-spacing: 2px;
+}
+
+.dial-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.dial-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+.btn-call-action {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #34c759;
+    border: none;
+    color: #ffffff;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+/* Bottom iOS Home Indicator Bar */
+.home-indicator-bar {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    z-index: 100;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}

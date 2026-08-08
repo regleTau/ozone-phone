@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OZONE Phone 14 Pro</title>
+
+    <!-- Google Fonts & Bootstrap Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- jQuery & NUI -->
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+    <!-- Main OZONE Phone Container -->
+    <div id="iphone-wrapper" class="iphone-container">
+        <!-- Physical Metallic OZONE Phone Chassis Frame -->
+        <div class="iphone-frame">
+            <!-- Side Buttons -->
+            <div class="side-btn power-btn"></div>
+            <div class="side-btn volume-up"></div>
+            <div class="side-btn volume-down"></div>
+
+            <!-- Screen Viewport -->
+            <div class="iphone-screen">
+                <!-- Brightness Overlay Filter -->
+                <div id="brightness-filter" class="brightness-layer"></div>
+
+                <!-- Dynamic Wallpaper -->
+                <div class="phone-wallpaper" id="phone-wallpaper-bg"></div>
+
+                <!-- Status Bar Top -->
+                <div class="status-bar" id="top-status-bar">
+                    <span id="phone-clock" class="status-time">13:19</span>
+
+                    <!-- DYNAMIC ISLAND NOTCH (iOS 16 LIVE MUSIC PILL) -->
+                    <div class="dynamic-island" id="dynamic-island-bar" title="Apasă pentru player-ul muzical">
+                        <div class="island-left" id="island-left-content">
+                            <div class="island-camera"></div>
+                        </div>
+
+                        <!-- Live Media Alert Display -->
+                        <div class="island-alert" id="island-notification">
+                            <i class="bi bi-disc-fill spot-spin" id="island-music-disc" style="color:#1db954; display:none;"></i>
+                            <span id="island-text" style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">OZONE OS</span>
+                            <div class="island-eq-bars" id="island-eq-animation" style="display:none;">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+
+                        <div class="island-right" id="island-right-content">
+                            <div class="island-sensor"></div>
+                        </div>
+                    </div>
+
+                    <div class="status-icons" id="status-icons-btn" title="Deschide Centrul de Control">
+                        <span id="net-type-label" class="net-type">5G</span>
+                        <i id="wifi-icon-bar" class="bi bi-wifi"></i>
+                        <i class="bi bi-battery-full battery-icon"></i>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC ISLAND EXPANDED FLOATING MINI PLAYER DRAWER -->
+                <div id="island-mini-player-drawer" class="island-mini-player-overlay">
+                    <div class="island-mini-header">
+                        <div class="island-mini-art">
+                            <img id="island-mini-cover" src="https://i.ytimg.com/vi/5qm8PH4skOy/hqdefault.jpg" alt="Cover">
+                        </div>
+                        <div class="island-mini-info">
+                            <h4 id="island-mini-title">In Da Club</h4>
+                            <p id="island-mini-artist">50 Cent • Dynamic Player</p>
+                        </div>
+                    </div>
+
+                    <div class="island-mini-controls">
+                        <i class="bi bi-skip-backward-fill island-ctrl-btn" id="island-btn-prev"></i>
+                        <div class="island-play-circle" id="island-btn-play-pause">
+                            <i class="bi bi-pause-fill" id="island-play-icon"></i>
+                        </div>
+                        <i class="bi bi-skip-forward-fill island-ctrl-btn" id="island-btn-next"></i>
+                    </div>
+                </div>
+
+                <!-- Screen Contents Wrapper -->
+                <div class="screen-body">
+
+                    <!-- ============================================================
+                         iOS CONTROL CENTER OVERLAY
+                         ============================================================ -->
+                    <div id="control-center" class="control-center-overlay">
+                        <div class="cc-header">
+                            <span>Centrul de Control</span>
+                            <button id="btn-close-cc" class="cc-close-btn"><i class="bi bi-x"></i></button>
+                        </div>
+
+                        <div class="cc-grid">
+                            <!-- Connectivity Card -->
+                            <div class="cc-card cc-conn-card">
+                                <div class="cc-icon-btn" id="btn-toggle-airplane" title="Mod Avion">
+                                    <i class="bi bi-airplane-fill"></i>
+                                    <span>Mod Avion</span>
+                                </div>
+                                <div class="cc-icon-btn active-cc" id="btn-toggle-5g" title="Date Mobil 5G">
+                                    <i class="bi bi-reception-4"></i>
+                                    <span>Date 5G</span>
+                                </div>
+                                <div class="cc-icon-btn active-cc" id="btn-toggle-wifi" title="WiFi">
+                                    <i class="bi bi-wifi"></i>
+                                    <span>WiFi</span>
+                                </div>
+                                <div class="cc-icon-btn active-cc" id="btn-toggle-bt" title="Bluetooth">
+                                    <i class="bi bi-bluetooth"></i>
+                                    <span>Bluetooth</span>
+                                </div>
+                            </div>
+
+                            <!-- Media Player Widget Card -->
+                            <div class="cc-card cc-media-card">
+                                <div class="media-info">
+                                    <h4 id="cc-song-title">Music Player</h4>
+                                    <p id="cc-song-sub">Media Player</p>
+                                </div>
+                                <div class="media-controls">
+                                    <i class="bi bi-skip-backward-fill" id="cc-btn-prev"></i>
+                                    <i class="bi bi-pause-fill media-play-btn" id="cc-play-pause-btn"></i>
+                                    <i class="bi bi-skip-forward-fill" id="cc-btn-next"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Brightness & Volume Sliders -->
+                        <div class="cc-sliders-row">
+                            <div class="cc-slider-box">
+                                <i class="bi bi-sun-fill"></i>
+                                <input type="range" id="slider-brightness" min="20" max="100" value="100">
+                            </div>
+                            <div class="cc-slider-box">
+                                <i class="bi bi-volume-up-fill"></i>
+                                <input type="range" id="slider-volume" min="0" max="100" value="80">
+                            </div>
+                        </div>
+
+                        <!-- Quick Shortcuts Grid -->
+                        <div class="cc-quick-grid">
+                            <div class="cc-qbtn" id="cc-btn-flashlight"><i class="bi bi-flashlight"></i></div>
+                            <div class="cc-qbtn" id="cc-btn-calculator"><i class="bi bi-calculator-fill"></i></div>
+                            <div class="cc-qbtn" id="cc-btn-camera"><i class="bi bi-camera-fill"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         CALL SCREEN OVERLAY
+                         ============================================================ -->
+                    <div id="call-screen" class="call-overlay">
+                        <div class="caller-avatar">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <h2 id="caller-name">ID: 2</h2>
+                        <span id="caller-sim-sub" class="caller-sim">Cartelă: 0722-149-802</span>
+                        <span id="call-status-label" class="call-status">Se apelează...</span>
+                        <div id="call-timer-box" class="call-timer" style="display:none;">00:00</div>
+
+                        <div class="call-actions-row">
+                            <button id="btn-reject-call" class="btn-call-ctrl btn-call-reject">
+                                <i class="bi bi-telephone-x-fill"></i>
+                            </button>
+                            <button id="btn-accept-call" class="btn-call-ctrl btn-call-accept">
+                                <i class="bi bi-telephone-fill"></i>
+                            </button>
+                            <button id="btn-hangup-call" class="btn-call-ctrl btn-call-hangup" style="display:none;">
+                                <i class="bi bi-telephone-x-fill"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         0A. REALISTIC OZONE OS LOCK SCREEN
+                         ============================================================ -->
+                    <div id="lock-screen" class="app-screen">
+                        <div class="lock-header">
+                            <div class="face-id-pill"><i class="bi bi-shield-lock-fill"></i> OZONE ID</div>
+                        </div>
+
+                        <div class="lock-clock-wrapper">
+                            <div class="lock-date" id="lock-date">SÂMBĂTĂ, 8 AUGUST</div>
+                            <div class="lock-time" id="lock-time">13:19</div>
+                        </div>
+
+                        <!-- Lock Screen Notifications -->
+                        <div class="lock-notifications">
+                            <div class="lock-notif-card">
+                                <div class="notif-icon sim-notif"><i class="bi bi-sim-fill"></i></div>
+                                <div class="notif-content">
+                                    <h4>Orange 5G Active</h4>
+                                    <p>Număr SIM: <strong id="lock-sim-num">0722-149-802</strong></p>
+                                </div>
+                                <span class="notif-time">Acum</span>
+                            </div>
+                        </div>
+
+                        <!-- Lock Screen Bottom Shortcuts -->
+                        <div class="lock-bottom-shortcuts">
+                            <div class="lock-btn-shortcut"><i class="bi bi-flashlight"></i></div>
+                            <div class="lock-unlock-prompt" id="btn-unlock-screen">Dă click pentru a debloca</div>
+                            <div class="lock-btn-shortcut" id="shortcut-camera"><i class="bi bi-camera-fill"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         0B. OZONE OS SETUP WIZARD
+                         ============================================================ -->
+                    <div id="setup-wizard" class="app-screen">
+                        <div class="setup-container">
+                            <div class="setup-step active-step" id="setup-step-1">
+                                <div class="ios-hello-title">Bine ai venit!</div>
+                                <p class="setup-sub">Configurează-ți noul OZONE Phone 14 Pro</p>
+                                <div class="brand-logo-icon"><i class="bi bi-cpu-fill"></i></div>
+                                <button class="btn-setup-next" data-next="2">Începe Configurarea <i class="bi bi-arrow-right-short"></i></button>
+                            </div>
+
+                            <div class="setup-step" id="setup-step-2">
+                                <div class="sim-activation-icon"><i class="bi bi-sim-fill"></i></div>
+                                <h3>Activare Cartelă SIM</h3>
+                                <p class="setup-sub">Numărul tău de telefon pe server:</p>
+
+                                <div class="sim-card-display">
+                                    <span class="sim-carrier">ORANGE 5G</span>
+                                    <h2 id="setup-sim-num">0722-149-802</h2>
+                                    <span class="sim-id">ID Jucător: <strong id="setup-user-id">1</strong></span>
+                                </div>
+
+                                <button class="btn-setup-next" data-next="3">Pasul Următor <i class="bi bi-arrow-right-short"></i></button>
+                            </div>
+
+                            <div class="setup-step" id="setup-step-3">
+                                <h3>Personalizează</h3>
+                                <p class="setup-sub">Alege fundalul tău favorit</p>
+
+                                <div class="wallpaper-selector">
+                                    <div class="wp-option active-wp" data-wp="purple">
+                                        <div class="wp-preview wp-preview-purple"></div>
+                                        <span>Violet Fluid</span>
+                                    </div>
+                                    <div class="wp-option" data-wp="cyber">
+                                        <div class="wp-preview wp-preview-cyber"></div>
+                                        <span>Deep Cyber</span>
+                                    </div>
+                                    <div class="wp-option" data-wp="sunset">
+                                        <div class="wp-preview wp-preview-sunset"></div>
+                                        <span>Gold Sunset</span>
+                                    </div>
+                                </div>
+
+                                <button class="btn-setup-next" data-next="4">Pasul Următor <i class="bi bi-arrow-right-short"></i></button>
+                            </div>
+
+                            <div class="setup-step" id="setup-step-4">
+                                <div class="face-id-icon"><i class="bi bi-shield-lock-fill"></i></div>
+                                <h3>Configurare Finalizată</h3>
+                                <p class="setup-sub">OZONE Phone este gata de utilizare!</p>
+
+                                <button id="btn-finish-setup" class="btn-setup-finish">Deschide Telefonul <i class="bi bi-check2-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         1. HOME SCREEN
+                         ============================================================ -->
+                    <div id="home-screen" class="app-screen active-screen">
+                        <!-- Weather / Date Widget -->
+                        <div class="ios-widget">
+                            <div class="widget-date" id="widget-date">Sâmbătă, 8 August</div>
+                            <div class="widget-weather">
+                                <i class="bi bi-sun-fill weather-icon"></i>
+                                <span class="temp">26°</span>
+                                <span class="city">Los Santos</span>
+                            </div>
+                        </div>
+
+                        <!-- Apps Grid (4x4) -->
+                        <div class="apps-grid" id="main-apps-grid">
+                            <div class="app-item" data-app="phone">
+                                <div class="app-icon icon-phone"><i class="bi bi-telephone-fill"></i></div>
+                                <span class="app-label">Telefon</span>
+                            </div>
+                            <div class="app-item" data-app="messages">
+                                <div class="app-icon icon-messages"><i class="bi bi-chat-fill"></i></div>
+                                <span class="app-label">Mesaje</span>
+                            </div>
+                            <div class="app-item" data-app="camera">
+                                <div class="app-icon icon-camera"><i class="bi bi-camera-fill"></i></div>
+                                <span class="app-label">Cameră</span>
+                            </div>
+                            <div class="app-item" data-app="photos">
+                                <div class="app-icon icon-photos"><i class="bi bi-images"></i></div>
+                                <span class="app-label">Poze</span>
+                            </div>
+
+                            <div class="app-item" data-app="bank">
+                                <div class="app-icon icon-bank"><i class="bi bi-bank2"></i></div>
+                                <span class="app-label">Bancă</span>
+                            </div>
+                            <div class="app-item" data-app="garage">
+                                <div class="app-icon icon-garage"><i class="bi bi-car-front-fill"></i></div>
+                                <span class="app-label">Garaj</span>
+                            </div>
+                            <div class="app-item" data-app="appstore">
+                                <div class="app-icon icon-appstore"><i class="bi bi-bag-fill"></i></div>
+                                <span class="app-label">App Store</span>
+                            </div>
+                            <div class="app-item" data-app="settings">
+                                <div class="app-icon icon-settings"><i class="bi bi-gear-wide-connected"></i></div>
+                                <span class="app-label">Setări</span>
+                            </div>
+
+                            <!-- Pre-Installed YouTube & Spotify Icons -->
+                            <div class="app-item" id="app-icon-youtube" data-app="youtube">
+                                <div class="app-icon icon-yt"><i class="bi bi-youtube"></i></div>
+                                <span class="app-label">YouTube</span>
+                            </div>
+                            <div class="app-item" id="app-icon-spotify" data-app="spotify">
+                                <div class="app-icon icon-spotify"><i class="bi bi-spotify"></i></div>
+                                <span class="app-label">Spotify</span>
+                            </div>
+                        </div>
+
+                        <!-- iOS Glass Dock Bar -->
+                        <div class="ios-dock">
+                            <div class="app-item" data-app="phone">
+                                <div class="app-icon icon-phone"><i class="bi bi-telephone-fill"></i></div>
+                            </div>
+                            <div class="app-item" data-app="youtube">
+                                <div class="app-icon icon-yt"><i class="bi bi-youtube"></i></div>
+                            </div>
+                            <div class="app-item" data-app="spotify">
+                                <div class="app-icon icon-spotify"><i class="bi bi-spotify"></i></div>
+                            </div>
+                            <div class="app-item" data-app="camera">
+                                <div class="app-icon icon-camera"><i class="bi bi-camera-fill"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         2. AUTHENTIC YOUTUBE MOBILE APP
+                         ============================================================ -->
+                    <div id="app-youtube" class="app-screen">
+                        <!-- Authentic YouTube Top Navigation Bar -->
+                        <div class="yt-nav-bar">
+                            <button class="back-btn yt-back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                            <div class="yt-brand-logo">
+                                <i class="bi bi-youtube"></i>
+                                <span>YouTube</span>
+                            </div>
+
+                            <div class="yt-nav-right">
+                                <i class="bi bi-display yt-nav-icon" title="Cast"></i>
+                                <i class="bi bi-bell yt-nav-icon" title="Notificări"></i>
+                                <div class="yt-account-avatar" id="btn-yt-account" title="Contul Tău Google">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ELEGANT YOUTUBE SEARCH PILL INPUT -->
+                        <div class="yt-search-container">
+                            <div class="yt-search-pill-box">
+                                <i class="bi bi-search yt-search-lens"></i>
+                                <input type="text" id="yt-search-input" placeholder="Caută piese (ex: Dani Mocanu, Florin Salam, 50 Cent)..." autocomplete="off">
+                                <i class="bi bi-x-circle-fill yt-clear-btn" id="btn-yt-clear-search" style="display:none;"></i>
+                            </div>
+                        </div>
+
+                        <!-- YouTube Categories Pills Bar -->
+                        <div class="yt-pills-bar">
+                            <div class="yt-pill active-pill" data-query="default">Toate</div>
+                            <div class="yt-pill" data-query="manele">Manele</div>
+                            <div class="yt-pill" data-query="trap">Trap</div>
+                            <div class="yt-pill" data-query="fifty_cent">Hip Hop</div>
+                            <div class="yt-pill" data-query="gaming">Gaming</div>
+                            <div class="yt-pill" data-query="lofi">Lofi</div>
+                        </div>
+
+                        <!-- Main Feed Content Area -->
+                        <div class="app-content yt-feed-content">
+                            <!-- Active Cinema Video Player (Shows when playing video) -->
+                            <div class="yt-cinema-box" id="yt-cinema-container">
+                                <div class="yt-player-wrapper">
+                                    <iframe id="yt-iframe-player" src="https://www.youtube-nocookie.com/embed/5qap5aO4i9A?autoplay=0&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen="true"></iframe>
+                                </div>
+                                <div class="yt-playing-meta">
+                                    <h3 id="yt-now-title">Lofi Hip Hop Radio - Beats to Study / Relax</h3>
+                                    <div class="yt-channel-row">
+                                        <div class="yt-ch-avatar"><i class="bi bi-music-note-beamed"></i></div>
+                                        <div class="yt-ch-info">
+                                            <h4 id="yt-now-channel">Lofi Girl</h4>
+                                            <span>11.4M abonați</span>
+                                        </div>
+                                        <button class="btn-yt-subscribe">Abonat <i class="bi bi-check2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Real YouTube Feed Video Cards -->
+                            <div class="yt-feed-grid" id="yt-video-feed-list">
+                                <!-- Dynamically generated search results & video cards -->
+                            </div>
+                        </div>
+
+                        <!-- User Profile Account Drawer (Modal Google/YouTube Account) -->
+                        <div id="yt-account-drawer" class="yt-account-modal" style="display:none;">
+                            <div class="yt-drawer-content">
+                                <div class="yt-drawer-header">
+                                    <div class="yt-profile-big-avatar">
+                                        <i class="bi bi-person-fill"></i>
+                                    </div>
+                                    <div class="yt-profile-meta">
+                                        <h3 id="yt-account-name">Jucător FiveM</h3>
+                                        <span id="yt-account-handle">@jucator_fivem</span>
+                                        <p>Cartelă SIM: <strong id="yt-account-sim">0722-149-802</strong></p>
+                                    </div>
+                                    <button id="btn-close-yt-account" class="close-photo-btn"><i class="bi bi-x"></i></button>
+                                </div>
+
+                                <div class="yt-drawer-list">
+                                    <div class="yt-drawer-item"><i class="bi bi-person-badge-fill"></i> Canalul Tău</div>
+                                    <div class="yt-drawer-item"><i class="bi bi-play-btn-fill"></i> Studio Creators</div>
+                                    <div class="yt-drawer-item"><i class="bi bi-clock-history"></i> Istoric vizionări</div>
+                                    <div class="yt-drawer-item"><i class="bi bi-shield-check"></i> Securitate Google Account</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         2B. AUTHENTIC SPOTIFY MOBILE MUSIC APP (PURE AUDIO & ALBUM ART)
+                         ============================================================ -->
+                    <div id="app-spotify" class="app-screen">
+                        <div class="spotify-header">
+                            <button class="back-btn spotify-back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                            <div class="spotify-brand">
+                                <i class="bi bi-spotify"></i>
+                                <span>Spotify</span>
+                            </div>
+                        </div>
+
+                        <div class="app-content spotify-content">
+                            <!-- Search Box -->
+                            <div class="spotify-search-bar">
+                                <i class="bi bi-search"></i>
+                                <input type="text" id="spotify-search-input" placeholder="Caută melodii, artiști sau albume..." autocomplete="off">
+                                <button type="button" id="btn-spotify-search">Căutare</button>
+                            </div>
+
+                            <!-- PURE SPOTIFY ALBUM ART NOW PLAYING PLAYER (NO YOUTUBE IFRAME) -->
+                            <div class="spotify-now-playing-container">
+                                <div class="spotify-album-art-box">
+                                    <img id="spotify-current-cover" src="https://i.ytimg.com/vi/5qm8PH4skOy/hqdefault.jpg" alt="Album Cover">
+                                    <div class="spot-vinyl-glow"><i class="bi bi-disc-fill spot-spin"></i></div>
+                                </div>
+
+                                <div class="spotify-track-meta">
+                                    <div class="spot-title-group">
+                                        <h3 id="spotify-now-title">In Da Club</h3>
+                                        <p id="spotify-now-artist">50 Cent • Get Rich or Die Tryin'</p>
+                                    </div>
+                                    <i class="bi bi-heart-fill spot-heart-icon"></i>
+                                </div>
+
+                                <!-- Spotify Audio Progress Bar -->
+                                <div class="spotify-progress-wrapper">
+                                    <div class="spotify-time-row">
+                                        <span id="spot-curr-time">0:45</span>
+                                        <span id="spot-total-time">3:48</span>
+                                    </div>
+                                    <div class="spotify-progress-bar">
+                                        <div id="spot-progress-fill" class="spot-progress-fill" style="width: 25%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Spotify Controls Bar -->
+                                <div class="spotify-action-controls">
+                                    <i class="bi bi-shuffle spot-ctrl-sub"></i>
+                                    <i class="bi bi-skip-start-fill spot-ctrl-btn" id="spot-btn-prev"></i>
+                                    <div class="spot-main-play-btn" id="spot-btn-main-play">
+                                        <i class="bi bi-pause-fill" id="spot-main-play-icon"></i>
+                                    </div>
+                                    <i class="bi bi-skip-end-fill spot-ctrl-btn" id="spot-btn-next"></i>
+                                    <i class="bi bi-repeat spot-ctrl-sub"></i>
+                                </div>
+                            </div>
+
+                            <!-- Hidden Audio Stream Engine (Completely invisible audio background playback) -->
+                            <iframe id="spotify-hidden-audio-iframe" src="" style="width:0px; height:0px; border:none; display:none;"></iframe>
+
+                            <!-- Popular Playlists & Songs Grid -->
+                            <div class="spotify-section-title">Recomandate pentru Tine</div>
+                            <div class="spotify-track-list" id="spotify-songs-grid">
+                                <!-- Loaded dynamically via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         3. APP STORE APP SCREEN
+                         ============================================================ -->
+                    <div id="app-appstore" class="app-screen">
+                        <div class="app-header">
+                            <button class="back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                            <h2>App Store</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="appstore-banner">
+                                <span>RECOMANDAT</span>
+                                <h3>Aplicații Top</h3>
+                            </div>
+
+                            <div class="appstore-list">
+                                <div class="appstore-card">
+                                    <div class="store-app-icon icon-yt"><i class="bi bi-youtube"></i></div>
+                                    <div class="store-app-info">
+                                        <h4>YouTube</h4>
+                                        <p>Muzică & Videoclipuri Live</p>
+                                    </div>
+                                    <button class="btn-install-app installed" id="btn-install-yt" data-app="youtube">
+                                        <span>Deschide</span>
+                                    </button>
+                                </div>
+
+                                <div class="appstore-card">
+                                    <div class="store-app-icon icon-spotify"><i class="bi bi-spotify"></i></div>
+                                    <div class="store-app-info">
+                                        <h4>Spotify</h4>
+                                        <p>Streaming Muzică & Podcast</p>
+                                    </div>
+                                    <button class="btn-install-app installed" id="btn-install-spotify" data-app="spotify">
+                                        <span>Deschide</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         4. CAMERA APP SCREEN (PURE TRANSPARENT VIEWFINDER)
+                         ============================================================ -->
+                    <div id="app-camera" class="app-screen" style="background: none !important; background-color: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;">
+                        <div class="camera-viewport" style="background: none !important; background-color: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;">
+                            <div class="camera-grid-line h-line"></div>
+                            <div class="camera-grid-line v-line"></div>
+
+                            <div class="camera-header-controls">
+                                <button class="back-btn cam-back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                                <span class="cam-zoom">1x</span>
+                                <i class="bi bi-lightning-charge-fill"></i>
+                            </div>
+
+                            <div class="camera-shutter-bar">
+                                <div class="cam-last-photo-thumb" id="cam-thumb-preview">
+                                    <i class="bi bi-image"></i>
+                                </div>
+
+                                <button id="btn-take-photo" class="shutter-button">
+                                    <div class="shutter-inner"></div>
+                                </button>
+
+                                <div class="cam-switch-flip">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         5. PHOTOS / GALLERY APP SCREEN
+                         ============================================================ -->
+                    <div id="app-photos" class="app-screen">
+                        <div class="app-header">
+                            <button class="back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                            <h2>Galerie Poze</h2>
+                        </div>
+                        <div class="app-content">
+                            <div id="photos-grid" class="photos-grid">
+                                <!-- Captured Photos Grid -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lightbox Photo Viewer Overlay -->
+                    <div id="photo-viewer-modal" class="photo-modal">
+                        <button id="btn-close-photo" class="close-photo-btn"><i class="bi bi-x"></i></button>
+                        <img id="photo-modal-img" src="" alt="Photo Fullscreen">
+                    </div>
+
+                    <!-- ============================================================
+                         6. BANK APP SCREEN
+                         ============================================================ -->
+                    <div id="app-bank" class="app-screen">
+                        <div class="app-header">
+                            <button class="back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                            <h2>Maze Bank</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="bank-card-widget">
+                                <span class="card-brand">MAZE BANK</span>
+                                <div class="card-balance">
+                                    <span class="bal-title">Sold Bancar</span>
+                                    <h1 id="bank-app-balance">$45,649,999</h1>
+                                </div>
+                                <div class="card-footer-info">
+                                    <span id="bank-app-cash">Cash: $1,978,300</span>
+                                    <i class="bi bi-credit-card-2-front-fill"></i>
+                                </div>
+                            </div>
+
+                            <form id="transfer-form" class="bank-form">
+                                <h3>Transfer Bani Rapid</h3>
+                                <input type="number" id="transfer-id" placeholder="ID Jucător Target" required>
+                                <input type="number" id="transfer-amount" placeholder="Suma ($)" required>
+                                <button type="submit" class="btn-bank-send">Trimite Bani</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         7. GARAGE APP SCREEN
+                         ============================================================ -->
+                    <div id="app-garage" class="app-screen">
+                        <div class="app-header">
+                            <button class="back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                            <h2>Vehiculele Mele</h2>
+                        </div>
+                        <div class="app-content">
+                            <div id="vehicle-list" class="vehicle-list">
+                                <!-- Vehicle Items dynamically loaded -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         8. TELEFON / CALLS APP SCREEN
+                         ============================================================ -->
+                    <div id="app-phone" class="app-screen">
+                        <div class="app-header">
+                            <button class="back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                            <h2>Apeluri (SIM / ID)</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="my-sim-bar">
+                                <i class="bi bi-sim-fill"></i>
+                                <span>Cartela Mea: <strong id="my-phone-sim-num">0722-149-802</strong></span>
+                            </div>
+
+                            <div class="dialer-wrapper">
+                                <div class="dialer-display" id="dial-number">--- --- ---</div>
+                                <div class="dial-pad">
+                                    <button class="dial-btn" data-key="1">1</button>
+                                    <button class="dial-btn" data-key="2">2</button>
+                                    <button class="dial-btn" data-key="3">3</button>
+                                    <button class="dial-btn" data-key="4">4</button>
+                                    <button class="dial-btn" data-key="5">5</button>
+                                    <button class="dial-btn" data-key="6">6</button>
+                                    <button class="dial-btn" data-key="7">7</button>
+                                    <button class="dial-btn" data-key="8">8</button>
+                                    <button class="dial-btn" data-key="9">9</button>
+                                    <button class="dial-btn" data-key="*">*</button>
+                                    <button class="dial-btn" data-key="0">0</button>
+                                    <button class="dial-btn" data-key="#">#</button>
+                                </div>
+                                <button class="btn-call-action" id="btn-start-call"><i class="bi bi-telephone-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         9. MESSAGES APP SCREEN
+                         ============================================================ -->
+                    <div id="app-messages" class="app-screen">
+                        <div class="app-header">
+                            <button class="back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                            <h2>Mesaje SMS</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="msg-list">
+                                <div class="msg-item">
+                                    <div class="msg-avatar"><i class="bi bi-person-fill"></i></div>
+                                    <div class="msg-info">
+                                        <h4>Maze Bank Alerts</h4>
+                                        <p>Ai primit un transfer de $5,000.</p>
+                                    </div>
+                                    <span class="msg-time">12:30</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         10. GPS MAP APP SCREEN
+                         ============================================================ -->
+                    <div id="app-gps" class="app-screen">
+                        <div class="app-header">
+                            <button class="back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                            <h2>Navigație GPS</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="gps-places-grid">
+                                <div class="gps-btn-place" data-x="233.16" data-y="-882.26">
+                                    <i class="bi bi-bank"></i>
+                                    <span>Banca Centrală</span>
+                                </div>
+                                <div class="gps-btn-place" data-x="425.1" data-y="-979.5">
+                                    <i class="bi bi-shield-fill"></i>
+                                    <span>Poliția Centrală</span>
+                                </div>
+                                <div class="gps-btn-place" data-x="298.5" data-y="-584.2">
+                                    <i class="bi bi-hospital-fill"></i>
+                                    <span>Spitalul Central</span>
+                                </div>
+                                <div class="gps-btn-place" data-x="-32.4" data-y="-1102.1">
+                                    <i class="bi bi-car-front-fill"></i>
+                                    <span>Dealer Auto</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         11. AUTHENTIC iOS 16 SETTINGS APP SCREEN
+                         ============================================================ -->
+                    <div id="app-settings" class="app-screen">
+                        <div class="app-header">
+                            <button class="back-btn"><i class="bi bi-chevron-left"></i> Acasă</button>
+                            <h2>Setări</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="ios-profile-card">
+                                <div class="ios-profile-avatar">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+                                <div class="ios-profile-info">
+                                    <h3 id="settings-user-name">Jucător FiveM</h3>
+                                    <p>Cartelă SIM: <strong id="settings-sim-num">0722-149-802</strong></p>
+                                    <span class="ios-sub-badge">Orange 5G • OZONE ID</span>
+                                </div>
+                                <i class="bi bi-chevron-right ios-arrow"></i>
+                            </div>
+
+                            <div class="ios-settings-group">
+                                <div class="ios-group-title">FUNDAL & ASPECT</div>
+
+                                <div class="wallpaper-selector">
+                                    <div class="wp-option active-wp" data-wp="purple">
+                                        <div class="wp-preview wp-preview-purple"></div>
+                                        <span>Violet Fluid</span>
+                                        <i class="bi bi-check2 ios-check-mark"></i>
+                                    </div>
+                                    <div class="wp-option" data-wp="cyber">
+                                        <div class="wp-preview wp-preview-cyber"></div>
+                                        <span>Deep Cyber</span>
+                                        <i class="bi bi-check2 ios-check-mark"></i>
+                                    </div>
+                                    <div class="wp-option" data-wp="sunset">
+                                        <div class="wp-preview wp-preview-sunset"></div>
+                                        <span>Gold Sunset</span>
+                                        <i class="bi bi-check2 ios-check-mark"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ios-settings-group">
+                                <div class="ios-group-title">SISTEM & DEBLOCARE</div>
+
+                                <div class="ios-list-item" id="btn-re-setup">
+                                    <div class="ios-item-icon icon-danger"><i class="bi bi-arrow-counterclockwise"></i></div>
+                                    <span class="ios-danger-text">Refă Configurarea Initială</span>
+                                    <i class="bi bi-chevron-right ios-arrow"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom iOS Home Indicator Bar -->
+                <div class="home-indicator-bar" id="home-indicator"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
