@@ -475,10 +475,6 @@ html, body {
     margin-bottom: 12px;
 }
 
-.setup-top-icon.green-icon {
-    color: #30d158;
-}
-
 .ios-hello-text {
     font-size: 36px;
     font-weight: 700;
@@ -486,6 +482,16 @@ html, body {
     color: #ffffff;
     margin-bottom: 4px;
     transition: opacity 0.25s ease;
+}
+
+.ios-welcome-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 8px;
 }
 
 .setup-title {
@@ -503,6 +509,10 @@ html, body {
     line-height: 1.35;
     margin-bottom: 20px;
     max-width: 250px;
+}
+
+#setup-step-4 .setup-sub {
+    margin-bottom: auto;
 }
 
 /* AUTHENTIC iOS GROUPED INSET LIST CONTAINER */
@@ -592,7 +602,7 @@ html, body {
     font-size: 16px;
 }
 
-/* AUTHENTIC iOS BUTTON */
+/* AUTHENTIC iOS SYSTEM BLUE BUTTON */
 .btn-setup-next, .btn-setup-finish {
     width: 100%;
     height: 44px;
@@ -613,10 +623,6 @@ html, body {
 .btn-setup-next:active, .btn-setup-finish:active {
     opacity: 0.8;
     transform: scale(0.98);
-}
-
-.btn-setup-finish {
-    background: #30d158;
 }
 
 .island-camera {
