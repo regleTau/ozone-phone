@@ -159,3 +159,169 @@ RegisterNetEvent("phone:transferMoney", function(targetId, amount)
         vRPclient.notify(src, {"Nu ai suficienți bani în bancă!"})
     end
 end)
+
+-- ============================================================
+--  SETARI TELEFON (wallpaper, setup_done)
+-- ============================================================
+RegisterNetEvent("phone:saveSettings", function(data)
+    local src = source
+    local user_id = vRP.getUserId({src})
+    if not user_id then return end
+
+    exports.oxmysql:query(
+        "INSERT INTO phone_settings (user_id, wallpaper, setup_done, operator) VALUES (@uid, @wp, @sd, @op) ON DUPLICATE KEY UPDATE wallpaper=@wp, setup_done=@sd",
+        {['@uid'] = user_id, ['@wp'] = data.wallpaper or 'deep-purple', ['@sd'] = data.setup_done and 1 or 0, ['@op'] = data.operator or 'Orange 5G'}
+    )
+end)
+
+RegisterNetEvent("phone:getSettings", function()
+    local src = source
+    local user_id = vRP.getUserId({src})
+    if not user_id then return end
+
+    exports.oxmysql:query("SELECT * FROM phone_settings WHERE user_id = @uid", {['@uid'] = user_id}, function(rows)
+        if rows and rows[1] then
+            TriggerClientEvent("phone:receiveSettings", src, rows[1])
+        else
+            TriggerClientEvent("phone:receiveSettings", src, {wallpaper = 'deep-purple', setup_done = 0, operator = 'Orange 5G'})
+        end
+    end)
+end)
+
+-- ============================================================
+--  CONTACTE
+-- ============================================================
+RegisterNetEvent("phone:getContacts", function()
+    local src = source
+    local user_id = vRP.getUserId({src})
+    if not user_id then return end
+
+    exports.oxmysql:query("SELECT id, name, number FROM phone_contacts WHERE owner_id = @uid ORDER BY name ASC", {['@uid'] = user_id}, function(rows)
+        TriggerClientEvent("phone:receiveContacts", src, rows or {})
+    end)
+end)
+
+RegisterNetEvent("phone:saveContact", function(name, number)
+    local src = source
+    local user_id = vRP.getUserId({src})
+    if not user_id then return end
+
+    if not name or #name < 1 or not number or #number < 3 then
+        vRPclient.notify(src, {"Nume sau număr invalid!"})
+        return
+    end
+
+    exports.oxmysql:query(
+        "INSERT INTO phone_contacts (owner_id, name, number) VALUES (@uid, @name, @num)",
+        {['@uid'] = user_id, ['@name'] = name, ['@num'] = number},
+        function()
+            vRPclient.notify(src, {"Contact salvat: " .. name})
+            TriggerEvent("phone:getContacts")
+        end
+    )
+end)
+
+RegisterNetEvent("phone:deleteContact", function(contactId)
+    local src = source
+    local user_id = vRP.getUserId({src})
+    if not user_id then return end
+
+    exports.oxmysql:query(
+        "DELETE FROM phone_contacts WHERE id = @cid AND owner_id = @uid",
+        {['@cid'] = contactId, ['@uid'] = user_id}
+    )
+end)
+
+-- ============================================================
+--  SMS
+-- ============================================================
+RegisterNetEvent("phone:sendSMS", function(receiverNumber, message)
+    local src = source
+    local user_id = vRP.getUserId({src})
+    if not user_id then return end
+
+    if not message or #message < 1 then return end
+
+    local senderNumber = GetUserPhoneNumber(user_id)
+
+    -- Salveaza mesajul in baza de date
+    exports.oxmysql:query(
+        "INSERT INTO phone_messages (sender_id, receiver_number, message) VALUES (@sid, @rnum, @msg)",
+        {['@sid'] = user_id, ['@rnum'] = receiverNumber, ['@msg'] = message}
+    )
+
+    -- Livreaza live daca destinatarul e online
+    local players = GetPlayers()
+    for _, p in ipairs(players) do
+        local pId = vRP.getUserId({tonumber(p)})
+        if pId and GetUserPhoneNumber(pId) == receiverNumber then
+            TriggerClientEvent("phone:receiveSMS", tonumber(p), {
+                from = senderNumber,
+                message = message,
+                time = os.date("%H:%M")
+            })
+            break
+        end
+    end
+end)
+
+RegisterNetEvent("phone:getSMSHistory", function(withNumber)
+    local src = source
+    local user_id = vRP.getUserId({src})
+    if not user_id then return end
+
+    local myNumber = GetUserPhoneNumber(user_id)
+
+    exports.oxmysql:query(
+        "SELECT * FROM phone_messages WHERE (sender_id = @uid AND receiver_number = @with) OR (receiver_number = @mynum AND sender_id IN (SELECT user_id FROM vrp_users WHERE id IN (SELECT user_id FROM vrp_user_ids))) ORDER BY sent_at ASC LIMIT 50",
+        {['@uid'] = user_id, ['@with'] = withNumber, ['@mynum'] = myNumber},
+        function(rows)
+            TriggerClientEvent("phone:receiveSMSHistory", src, rows or {})
+        end
+    )
+end)
+
+-- ============================================================
+--  ISTORIC APELURI
+-- ============================================================
+local callStartTimes = {}
+
+RegisterNetEvent("phone:logCallStart", function()
+    local src = source
+    callStartTimes[src] = os.time()
+end)
+
+RegisterNetEvent("phone:logCallEnd", function(receiverId, status)
+    local src = source
+    local user_id = vRP.getUserId({src})
+    local target_id = tonumber(receiverId)
+    if not user_id or not target_id then return end
+
+    local duration = 0
+    if callStartTimes[src] then
+        duration = os.time() - callStartTimes[src]
+        callStartTimes[src] = nil
+    end
+
+    local callerNum = GetUserPhoneNumber(user_id)
+    local receiverNum = GetUserPhoneNumber(target_id)
+
+    exports.oxmysql:query(
+        "INSERT INTO phone_calls (caller_id, receiver_id, caller_number, receiver_number, status, duration) VALUES (@cid, @rid, @cnum, @rnum, @st, @dur)",
+        {['@cid'] = user_id, ['@rid'] = target_id, ['@cnum'] = callerNum, ['@rnum'] = receiverNum, ['@st'] = status or 'missed', ['@dur'] = duration}
+    )
+end)
+
+RegisterNetEvent("phone:getCallHistory", function()
+    local src = source
+    local user_id = vRP.getUserId({src})
+    if not user_id then return end
+
+    exports.oxmysql:query(
+        "SELECT * FROM phone_calls WHERE caller_id = @uid OR receiver_id = @uid ORDER BY called_at DESC LIMIT 30",
+        {['@uid'] = user_id},
+        function(rows)
+            TriggerClientEvent("phone:receiveCallHistory", src, rows or {})
+        end
+    )
+end)
