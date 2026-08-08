@@ -1,64 +1,68 @@
-# 📱 OZONE Phone 14 Pro Max (FiveM vRP Resource)
+﻿# 📱 OZONE Phone — iPhone 14 Pro Max UI pentru FiveM
 
-> ⚠️ **STATUS: WORK IN PROGRESS / IN DEVELOPMENT** ⚠️  
-> *This FiveM phone resource is under active development. Features, design, and UI components are continuously being updated.*
-
-An ultra-modern, authentic **iOS 16 (iPhone 14 Pro Max)** styled mobile phone resource crafted specifically for **FiveM servers (vRP Framework)**. Features sleek glassmorphic UI, smooth CSS micro-animations, real media playback, and custom 3D camera support.
+> **⚠️ STATUS: WORK IN PROGRESS (WIP) — Telefonul este inca in curs de dezvoltare activa. Unele functionalitati pot lipsi sau pot fi incomplete.**
 
 ---
 
-## 📸 Screenshots (Showcase)
+<div align="center">
 
-![Dynamic Island Expanded Mini Player Showcase](screenshots/preview1.png)
-![iOS 16 Home Screen Showcase](screenshots/preview2.png)
+## 📸 Preview
 
----
+| Setup iPhone | Retea SIM | Bine ai venit |
+|:---:|:---:|:---:|
+| ![Setup](docs/screenshots/preview3_setup.png) | ![SIM](docs/screenshots/preview2_sim.png) | ![Hello](docs/screenshots/preview1_hello.png) |
 
-## ✨ Features & Application Status
-
-- **📱 Authentic iOS 16 System Interface**:
-  - Glassmorphic UI with dynamic wallpapers, dock bar, realistic lock screen, and Face ID scanning animation.
-  - Interactive iOS **Control Center** (brightness slider, volume slider, Airplane Mode, 5G, WiFi, Bluetooth, flashlight).
-
-- **🎵 Dynamic Island Live Music Controller**:
-  - Top status bar notch pill that automatically expands when media plays on YouTube or Spotify.
-  - Live animated audio equalizer frequency bars and spinning vinyl disc.
-  - **Expanded Mini Floating Player Overlay**: Tap the Dynamic Island from any app to access Play/Pause, Previous/Next track controls, and live album art.
-
-- **📺 YouTube Mobile App** — `🚧 COMING SOON / UNDER DEVELOPMENT`:
-  - *Currently in active development!* Video search engine, cinema player embed, and Google/YouTube account drawer.
-
-- **🎧 Spotify Music App** — `🚧 COMING SOON / UNDER DEVELOPMENT`:
-  - *Currently in active development!* `#121212` dark green mobile design, album art cover player, spinning vinyl disc, and background audio streaming engine.
-
-- **📸 3D Camera & Photos Gallery** — `🚧 COMING SOON / UNDER DEVELOPMENT`:
-  - *Currently in active development!* Real-time GTA V 3D camera viewfinder with selfie character orientation and photo gallery preview.
-
-- **🏦 Maze Bank & Vehicle Garage**:
-  - Direct player-to-player money transfers.
-  - Garage vehicle list with one-click GPS waypoint tracking.
-
-- **📞 Phone Calls & SIM System**:
-  - Integrated dialer pad, dual SIM number support, custom synthesized ringtones, and active call timer.
+</div>
 
 ---
 
-## 🛠️ FiveM Server Installation
+## ✨ Caracteristici
 
-1. Place the `phone` resource directory into your FiveM server's resources folder:
-   `resources/[scripts]/phone`
-2. Add the resource to your `server.cfg`:
-   ```cfg
-   ensure phone
-   ```
-3. Open in-game with default hotkey: **`F1`** (or `/phone` command).
-
----
-
-## ⚙️ Requirements
-- FiveM Server with **vRP Framework**.
-- NUI Focus enabled.
+- 🍏 **Boot Screen autentic Apple** — Logo + bara de progres la pornire
+- 🔒 **Setup Wizard iOS 16** — Animatie Hello multilingva, configurare SIM, alegere wallpaper
+- 🎛️ **Control Center iOS 16** — Slider capsule verticale, toggle WiFi/Bluetooth/5G/Mod Avion, media player
+- 📞 **Tastatura Telefon** — Cifre cu litere (ABC, DEF...) identic iPhone, tab bar nativ
+- 💬 **iMessage** — Thread-uri cu avatar, preview mesaj, bara de cautare nativa
+- 🎵 **YouTube** — Player video integrat, cautare live, categorii rapide
+- 🎵 **Spotify** — Player muzica cu album art, progres, controale
+- 🏦 **Maze Bank** — Sold bancar, transfer rapid
+- 🚗 **Garaj** — Vehiculele jucatorului cu GPS
+- 🌐 **Dynamic Island** — Mini player muzica, animatie EQ live
 
 ---
 
-*Crafted with passion for high-end UI/UX.* 🚀
+## 🚧 WIP — Ce urmeaza
+
+| Feature | Status |
+|---|---|
+| Camera 3D (NUI) | 🔄 In lucru |
+| SMS trimis/primit | 🔄 In lucru |
+| Contacte complete | 🔄 In lucru |
+| Notificari Lock Screen | 🔄 In lucru |
+| FaceTime (apel video) | 📋 Planificat |
+
+---
+
+## ⚙️ Instalare
+
+1. Copiaza folderul `phone` in `resources/[scripts]/`
+2. Adauga in `server.cfg`: `ensure phone`
+3. Exporturile din `client.lua` sunt automat conectate la NUI
+
+---
+
+## 📞 Support & Contact
+
+- **Discord:** [discord.gg/twaxxvrp](https://discord.gg/twaxxvrp)
+- **YouTube:** [@twaxx16](https://youtube.com/@twaxx16)
+- **Tutorial instalare:** [YouTube Tutorial](https://www.youtube.com/watch?v=k3Ra0r6FRI4)
+
+---
+
+<div align="center">
+
+**Facut cu ❤️ pentru serverul OZONE FiveM**
+
+*Telefonul este in dezvoltare activa — mai multe update-uri vin in curand!*
+
+</div>
